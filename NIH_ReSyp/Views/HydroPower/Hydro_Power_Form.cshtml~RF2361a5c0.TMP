@@ -1,0 +1,572 @@
+﻿@model NIH_ReSyp.Models.hydropower
+
+@{
+    ViewBag.Title = "Hydro Power Form";
+}
+
+
+<div class="col-md-10  offset-1">
+    @using (Html.BeginForm("Hydro_Power_Form", "HydroPower", FormMethod.Post, new { @class = "", id = "hydroform", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+                Data Entry For HydroPower Analysis
+            </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="">
+            @Html.LabelFor(model => model.Title_of_problem, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Title_of_problem, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue1", placeholder = "Sample Data for Firm Power Determination / Hydropower Simulation" } })
+            @Html.ValidationMessageFor(model => model.Title_of_problem, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Name_of_Reservoir, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Name_of_Reservoir, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue2", placeholder = "Test Reservoir" } })
+            @Html.ValidationMessageFor(model => model.Name_of_Reservoir, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Startingyear, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Startingyear, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue3", placeholder = "1956", type = "number", min = "1900", max = "2020", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value   < 1) ? (1/1) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Startingyear, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.startingmonth, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.startingmonth, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue4", placeholder = "11", type = "number", min = "1", max = "12", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value   < 1) ? (1/1) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.startingmonth, "", new { @class = "text-danger" })
+
+        </div>
+        <input type="button" class="btn btn-success col-md-3 pull-right" value="E-A-C Table" id="hydrotblbtn" />
+        <div class="">
+            @Html.LabelFor(model => model.numberofmonthsforanalysis, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.numberofmonthsforanalysis, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue5", placeholder = "200", type = "number", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.numberofmonthsforanalysis, "", new { @class = "text-danger" })
+
+        </div>
+        <input type="button" class="btn btn-success col-md-3 pull-right" value="Inflow Data" id="inflowdatahydrobtn" />
+        <div class="">
+            @Html.LabelFor(model => model.Reliability3, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliability3, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue6", placeholder = "4000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability3, "", new { @class = "text-danger" })
+
+        </div>
+        <input type="button" class="btn btn-success col-md-3 pull-right" value="Evaporation Depths" id="evabtn" />
+        <div class="">
+            @Html.LabelFor(model => model.Reliability4, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.DropDownListFor(model => model.Reliability4, new SelectList(ViewBag.list), htmlAttributes: new { @class = "form-control", id = "hydrofrmvalue7" })
+            @*@Html.EditorFor(model => model.Reliability4, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.Reliability4, "", new { @class = "text-danger" })
+
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.Reliability5, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliability5, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue8", placeholder = "20000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability5, "", new { @class = "text-danger" })
+        </div>
+
+        <div>
+
+        </div>
+        <div class="">
+            @Html.LabelFor(model => model.Reliability6, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliability6, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue9", placeholder = "50.0", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability6, "", new { @class = "text-danger" })
+
+        </div>
+
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliability7, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliability7, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue10", placeholder = "473.0", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability7, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliability8, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliability8, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue11", placeholder = "60.0", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability8, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliability9, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliability9, new { htmlAttributes = new { @class = "form-control", id = "hydrofrmvalue12", placeholder = "616.0", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability9, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliabilit, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliabilit, new { htmlAttributes = new { @class = "txtbox_froms", id = "hydrofrmvalue13", placeholder = "0.85", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliabilit, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="">
+            @Html.LabelFor(model => model.numberofdatapoints, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.numberofdatapoints, new { htmlAttributes = new { @class = "txtbox_froms", id = "hydrofrmvalue14", placeholder = "11", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.numberofdatapoints, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliaba, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliaba, new { htmlAttributes = new { @class = "txtbox_froms", id = "hydrofrmvalue15", placeholder = "100000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliaba, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliabw, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliabw, new { htmlAttributes = new { @class = "txtbox_froms", id = "hydrofrmvalue16", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliabw, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliabq, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliabq, new { htmlAttributes = new { @class = "txtbox_froms", id = "hydrofrmvalue17", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliabq, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliabc, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliabc, new { htmlAttributes = new { @class = "txtbox_froms", id = "hydrofrmvalue18", placeholder = "100000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliabc, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Reliabd, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliabd, new { htmlAttributes = new { @class = "txtbox_froms", id = "hydrofrmvalue19", placeholder = "100000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliabd, "", new { @class = "text-danger" })
+        </div>
+
+        <br />
+
+        <div>
+            <input type="button" class="btn-NIH_link" value="Retrieve" />
+            <input type="submit" id="btnsubmit" class="btn-NIH_link" value="Save" />
+            <input type="button" class="btn-NIH_link" value="Clear" id="hydrofrmclr" />
+        </div>
+
+
+    }
+
+
+    <div>
+
+        <div style="display:none;" id="Hydropowercontbl">
+
+        </div>
+
+        <input type="button" class="btn-NIH_link " value="Back" id="BackbtnEACTable" style="display:none; margin-left:450px;" />
+        <input type="button" value="Submit Values" class="btn-NIH_link" id="btnsbmtEACTable" style="display:none; margin-right:300px;" />
+    </div>
+
+    <div class="container" id="containerhydro" style="display:none; width:400px;">
+        <form class="well form-horizontal" style="font-size:15px;">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">January</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="4.2" id="january" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">February</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="5.2" id="february" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">March</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="8.9" id="march" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">April</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="9.9" id="april" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">May</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="11.6" id="may" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">June</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="11.0" id="june" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">July</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="11.9" id="july" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">August</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="10.8" id="august" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">September</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="8.9" id="september" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">October</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="7.9" id="october" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">November</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="5.4" id="november" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">December</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="4.3" id="december" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <input type="button" class="btn-NIH_link" value="Back" style="margin-left:50px;" id="Evaporationback" />
+                <input type="button" value="Submit Values" class="btn-NIH_link" id="Evaporationsubmit" />
+            </fieldset>
+        </form>
+    </div>
+
+
+    <div>
+        <div style="display:none;" id="hydrocont2">
+
+        </div>
+
+        <input type="button" class="btn-NIH_link " value="Back" id="BackbtnInflowtable" style="display:none; margin-left:450px;" />
+        <input type="button" value="Submit Values" class="btn-NIH_link" id="btnsbmtInflowtable" style="display:none; margin-right:300px;" />
+    </div>
+
+</div>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#hydrotblbtn").click(function () {
+            SubmitHydroPowerFun();
+            $("#Hydropowercontbl").show();
+            $("#hydroform").hide();
+            $("#BackbtnEACTable").show();
+            $("#btnsbmtEACTable").show();
+        });
+        $("#BackbtnEACTable").click(function () {
+            $("#Hydropowercontbl").hide();
+            $("#hydroform").show();
+            $("#BackbtnEACTable").hide();
+            $("#btnsbmtEACTable").hide();
+        });
+        $("#btnsbmtEACTable").click(function () {
+            Submithydrofun();
+            $("#Hydropowercontbl").hide();
+            $("#hydroform").show();
+            $("#BackbtnEACTable").hide();
+            $("#btnsbmtEACTable").hide();
+        })
+        $("#hydrofrmclr").click(function () {
+            $("#hydroform")[0].reset();
+        })
+        $("#evabtn").click(function () {
+            $("#containerhydro").show();
+            $("#hydroform").hide();
+        });
+        $("#Evaporationback").click(function () {
+            $("#containerhydro").hide();
+            $("#hydroform").show();
+        });
+        $("#Evaporationsubmit").click(function () {
+            Submitevaporationbtn();
+            $("#containerhydro").hide();
+            $("#hydroform").show();
+        });
+        $("#inflowdatahydrobtn").click(function () {
+            $("#hydrocont2").show();
+            $("#hydroform").hide();
+            InflowValuefun();
+            $("#BackbtnInflowtable").show();
+            $("#btnsbmtInflowtable").show();
+        });
+        $("#BackbtnInflowtable").click(function () {
+            $("#hydrocont2").hide();
+            $("#hydroform").show();
+            $("#BackbtnInflowtable").hide();
+            $("#btnsbmtInflowtable").hide();
+        });
+
+        $("#btnsbmtInflowtable").click(function () {
+            SubmitInflowfun();
+            $("#hydrocont2").hide();
+            $("#hydroform").show();
+            $("#BackbtnInflowtable").hide();
+            $("#btnsbmtInflowtable").hide();
+        });
+
+
+        function InflowValuefun() {
+            var Obj = {
+                Startingyear: parseInt($('#hydrofrmvalue3').val()),
+                startingmonth: parseInt($('#hydrofrmvalue4').val()),
+                numberofmonthsforanalysis: parseInt($('#hydrofrmvalue5').val()),
+
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GETInflowFunc", "HydroPower")',
+                data: JSON.stringify({ 'hydro': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    //console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += '<table id="InflowTable" class="table col-lg-offset-3" style="text-align:center; width:600px;">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+                    htmlNew += '<th class="col-md-2" style="text-align:center">Month-Year</th>';
+                    htmlNew += '<th class="col-md-2" style="text-align:center">Inflow</th>';
+
+
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+
+                        htmlNew += '<td style="font-size: 12px" id="values1">' + item.monthyear + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values2" contenteditable="true">' + item.inflow + '</td>';
+
+
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+                    $('#hydrocont2').html(htmlNew);
+
+                }
+            });
+        }
+        function SubmitInflowfun() {
+            var customers = new Array();
+            $("#InflowTable TBODY TR").each(function () {
+                var row = $(this);
+                var customer = {};
+
+                customer.monthyear = parseInt(row.find("TD").eq(0).html());
+                customer.inflow = parseInt(row.find("TD").eq(1).html());
+
+
+                customers.push(customer);
+                //console.log(customers)
+
+                dataToPost = JSON.stringify({ monthInflows: customers });
+
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("Inflowreturnfun", "HydroPower")',
+            traditional: true,
+             data: dataToPost,
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {
+                    console.log(r);
+
+            }
+            });
+            });
+        }
+        function SubmitHydroPowerFun() {
+            var Obj = {
+                numberofdatapoints: parseInt($('#hydrofrmvalue14').val()),
+            };
+
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("HydroPowerForm", "HydroPower")',
+                data: JSON.stringify({ 'hydro': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += ' <table class="table col-lg-offset-3" style="text-align:center; width:600px" id="AreaEacTable">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Elevation</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Area</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Capacity</th>';
+
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+
+                        htmlNew += '<td style="font-size: 12px" contenteditable="true">' + item.elevation + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values2" contenteditable="true">' + item.area + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values" contenteditable="true">' + item.capacity + '</td>';
+
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+                    $('#Hydropowercontbl').html(htmlNew);
+
+
+                }
+            });
+        }
+
+          function Submithydrofun() {
+            var customers = new Array();
+              $("#AreaEacTable TBODY TR").each(function () {
+                var row = $(this);
+                var customer = {};
+
+                  customer.elevation = parseInt(row.find("TD").eq(0).html());
+                  customer.area = parseInt(row.find("TD").eq(1).html());
+                 customer.capacity = parseInt(row.find("TD").eq(2).html());
+
+                customers.push(customer);
+                //console.log(customers)
+
+                  dataToPost = JSON.stringify({ eACtablesnew: customers });
+
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("EacTable", "HydroPower")',
+            traditional: true,
+             data: dataToPost,
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {
+                    console.log(r);
+
+            }
+            });
+            });
+        }
+         function Submitevaporationbtn() {
+            var Obj = {
+                January: parseInt($('#january').val()),
+                February: parseInt($('#february').val()),
+                March: parseInt($('#march').val()),
+                April: parseInt($('#april').val()),
+                May: parseInt($('#may').val()),
+                June: parseInt($('#june').val()),
+                July: parseInt($('#july').val()),
+                August: parseInt($('#august').val()),
+                September: parseInt($('#september').val()),
+                October: parseInt($('#october').val()),
+                November: parseInt($('#november').val()),
+                December: parseInt($('#december').val()),
+            };
+
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Evaporation", "HydroPower")',
+                data: JSON.stringify({ 'evaporationDepths': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                   // alert(result);
+
+                }
+            });
+        }
+
+
+    });
+</script>
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />

@@ -1,0 +1,521 @@
+﻿@model NIH_ReSyp.Models.Floodoper3
+
+@{
+    ViewBag.Title = "Flood_Operation_Form3";
+}
+
+<div class="col-md-10  offset-1">
+    @using (Html.BeginForm("Flood_Operation_Form3", "Floodoper", FormMethod.Post, new { @class = "form-horizontal col-md-12", id = "floodform3", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+            Data Entry For Flood Control Operation
+        </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class=" ">
+            @Html.LabelFor(model => model.Titleof_problem, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+                @Html.EditorFor(model => model.Titleof_problem, new { htmlAttributes = new { @class = "txtbox_froms", id = "frm3value1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @*@Html.ValidationMessageFor(model => model.Titleof_problem, "", new { @class = "text-danger" })*@
+            </div>
+     
+        <input type="button" class="btn btn-success col-md-3 pull-right" value="Specify E-A-C-R Table" id="eacrtbl" />
+        <div class=" ">
+            @Html.LabelFor(model => model.numberofstructure, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.numberofstructure, new { htmlAttributes = new { @class = "txtbox_froms", id = "frm3value2", placeholder = "14", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.numberofstructure, "", new { @class = "text-danger" })*@
+
+        </div>
+        <input type="button" class="btn btn-success col-md-3 pull-right" value="Specify Upper Rule Level" id="upprrulebtn" />
+        <div class=" ">
+            @Html.LabelFor(model => model.staringyear, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.DropDownListFor(model => model.staringyear, new SelectList(ViewBag.list), htmlAttributes: new { @class = "txtbox_froms", id = "frm3value3" })
+            @*@Html.EditorFor(model => model.staringyear, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*@Html.ValidationMessageFor(model => model.staringyear, "", new { @class = "text-danger" })*@
+        </div>
+       
+        <input type="button" class="btn btn-success col-md-3 pull-right" value="Specify Evaporation Depths" id="evabtndepth" />
+
+        <div class=" ">
+            @Html.LabelFor(model => model.staringmnth, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.staringmnth, new { htmlAttributes = new { @class = "txtbox_froms", id = "frm3value4", placeholder = "4.0", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.staringmnth, "", new { @class = "text-danger" })*@
+       
+        </div>
+        <input type="button" class="btn btn-success col-md-3 pull-right" value="Specify Inflow Data" id="mnthlyfactor" />
+        <div class="">
+            @Html.LabelFor(model => model.staringmonth, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.staringmonth, new { htmlAttributes = new { @class = "txtbox_froms", id = "frm3value5", placeholder = "0.1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.staringmonth, "", new { @class = "text-danger" })*@
+
+        </div>
+        <input type="button" class="btn btn-success col-md-3  pull-right" value="Save Structure Information" id="savebtn" />
+        <div class="">
+            @Html.LabelFor(model => model.timestep, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.timestep, new { htmlAttributes = new { @class = "txtbox_froms", id = "frm3value6", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.timestep, "", new { @class = "text-danger" })*@
+        </div>
+         
+
+        <div class="">
+            @Html.LabelFor(model => model.numberofperiod, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.numberofperiod, new { htmlAttributes = new { @class = "txtbox_froms", id = "frm3value7", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.numberofperiod, "", new { @class = "text-danger" })*@
+        </div>
+       
+
+        <div class="">
+            @Html.LabelFor(model => model.Idofstructure, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Idofstructure, new { htmlAttributes = new { @class = "txtbox_froms", id = "frm3value8", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Idofstructure, "", new { @class = "text-danger" })*@
+        </div>
+       
+        <br />
+        <br />
+        <div>
+            <input type="button" class="btn-NIH_link" value="Retrieve" />
+            <input type="submit" id="sbmtbtnfrm3" class="btn-NIH_link" value="Save" />
+            <input type="button" class="btn-NIH_link" value="Clear" id="floodfrmclr3" />
+            @Html.ActionLink("Back", "Flood_Operation_Form2", "Floodoper", new { @class = "btn-NIH_link" })
+
+        </div>
+
+    }
+
+
+    <div>
+
+        <div style="display:none;" id="FLoodtable">
+
+
+
+
+        </div>
+
+        <input type="button" class="btn-NIH_link " value="Back" id="EACTablebackbtn" style="display:none; margin-left:450px;" />
+        <input type="submit" value="Submit Values" class="btn-NIH_link" id="EACTablesubmitbtn" style="display:none; margin-right:300px;" />
+    </div>
+
+    <div class="container" id="containerflood" style="display:none;width:400px;">
+        <form class="well form-horizontal" style="font-size:15px;">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">January</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">February</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">March</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">April</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">May</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">June</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">July</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">August</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">September</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">October</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">November</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">December</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <input type="button" class="btn-NIH_link " value="Back" style="margin-left:50px;" id="upprruleback" />
+                <input type="submit" value="Submit Values" class="btn-NIH_link" id="floodsbmt" />
+            </fieldset>
+        </form>
+    </div>
+    <div class="container" id="containerflood2" style="display:none;width:400px;">
+        <form class="well form-horizontal" style="font-size:15px;">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">January</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">February</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">March</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">April</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">May</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">June</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">July</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">August</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">September</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">October</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">November</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">December</label>
+                    <div class="col-md-3 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <input type="button" class="btn-NIH_link " value="Back" style="margin-left:50px;" id="evaporbtn" />
+                <input type="submit" value="Submit Values" class="btn-NIH_link" id="floodsbmt2" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container" id="containerflood3" style="display:none">
+        <table class="table col-lg-offset-4" style=" text-align:center; width:400px" id="tbl2">
+            <thead>
+                <tr>
+                    <th class="col-md-2" style="text-align:center">Month</th>
+                    <th class="col-md-2" style="text-align:center">Inflow</th>
+            </thead>
+            <tbody>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.0</td>
+                </tr>
+                <tr class="active">
+                    <td>0.0</td>
+                    <td>0.o</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <input type="button" class="btn-NIH_link" value="Back" style="margin-left:500px;" id="inflowbackbtn" />
+        <input type="submit" value="Submit Values" class="btn-NIH_link" id="eactblbtnsbmt2" />
+    </div>
+
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#floodfrmclr3").click(function () {
+            $("#floodform3")[0].reset();
+        });
+        $("#eacrtbl").click(function () {
+            SubmitFloodTable();
+            $("#FLoodtable").show();
+            $("#floodform3").hide();
+            $("#EACTablebackbtn").show();
+            $("#EACTablesubmitbtn").show();
+        })
+        $("#EACTablebackbtn").click(function () {
+            $("#FLoodtable").hide();
+            $("#floodform3").show();
+            $("#EACTablebackbtn").hide();
+            $("#EACTablesubmitbtn").hide();
+        });
+        $("#EACTablesubmitbtn").click(function () {
+            Submitflood();
+            $("#FLoodtable").hide();
+            $("#floodform3").show();
+            $("#EACTablebackbtn").hide();
+            $("#EACTablesubmitbtn").hide();
+        })
+        $("#upprrulebtn").click(function () {
+            $("#containerflood").show();
+            $("#floodform3").hide();
+        })
+        $("#upprruleback").click(function () {
+            $("#containerflood").hide();
+            $("#floodform3").show();
+        })
+        $("#evabtndepth").click(function () {
+            $("#containerflood2").show();
+            $("#floodform3").hide();
+        })
+        $("#evaporbtn").click(function () {
+            $("#containerflood2").hide();
+            $("#floodform3").show();
+        })
+        $("#mnthlyfactor").click(function () {
+            $("#containerflood3").show();
+            $("#floodform3").hide();
+        })
+        $("#inflowbackbtn").click(function () {
+            $("#containerflood3").hide();
+            $("#floodform3").show();
+        })
+       function SubmitFloodTable() {
+            var Obj = {
+                numberofstructure: parseInt($('#frm3value2').val()),
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetFloodOperation", "Floodoper")',
+                data: JSON.stringify({ 'fld3': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += ' <table class="table col-lg-offset-3" style="text-align:center; width:600px" id="FloodTable">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Elevation</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Area</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Capacity</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">RelCapacity</th>';
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+
+                        htmlNew += '<td style="font-size: 12px" contenteditable="true">' + item.Area + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values2" contenteditable="true">' + item.Elevation + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values" contenteditable="true">' + item.Capacity + '</td>';
+                        htmlNew += '<td style="font-size: 12px" contenteditable="true">' + item.RelCapacity + '</td>';
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+                    $('#FLoodtable').html(htmlNew);
+
+
+                }
+            });
+        }
+                function Submitflood() {
+            var customers = new Array();
+                    $("#FloodTable TBODY TR").each(function () {
+                var row = $(this);
+                var customer = {};
+
+                customer.Area = parseInt(row.find("TD").eq(0).html());
+                customer.Elevation = parseInt(row.find("TD").eq(1).html());
+                 customer.Capacity = parseInt(row.find("TD").eq(2).html());
+                 customer.RelCapacity = (row.find("TD").eq(3).html());
+                customers.push(customer);
+                //console.log(customers)
+
+                        dataToPost = JSON.stringify({ specifyeacrtablesnew: customers });
+
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("GetFloodOperation", "Floodoper")',
+            traditional: true,
+             data: dataToPost,
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {
+                    console.log(r);
+
+            }
+            });
+            });
+        }
+    });
+
+</script>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />

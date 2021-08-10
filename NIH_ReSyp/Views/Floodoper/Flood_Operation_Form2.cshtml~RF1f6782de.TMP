@@ -1,0 +1,207 @@
+﻿@model NIH_ReSyp.Models.Floodoper2
+
+@{
+    ViewBag.Title = "Flood_Operation_Form2";
+}
+
+<div class="col-md-9  offset-2">
+
+    @using (Html.BeginForm("Flood_Operation_Form2", "Floodoper", FormMethod.Post, new { @class = "", id = "floodform2", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+            Data Entry For Flood Control Operation
+        </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="">
+            @Html.LabelFor(model => model.Title_of_problem, htmlAttributes: new { @class = "lable_froms" })
+         <br />
+                @Html.EditorFor(model => model.Title_of_problem, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value1", placeholder = "Abc" } })
+                @*@Html.ValidationMessageFor(model => model.Title_of_problem, "", new { @class = "text-danger" })*@
+            </div>
+       
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Name_of_Reservoir, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Name_of_Reservoir, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value2", placeholder = "0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Name_of_Reservoir, "", new { @class = "text-danger" })*@
+        </div>
+       
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Starting_year, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Starting_year, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value3", placeholder = "0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Starting_year, "", new { @class = "text-danger" })*@
+        </div>
+     
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Starting_Month, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Starting_Month, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value4", placeholder = "1420.0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Starting_Month, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.No_of_months_for_analysis, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.No_of_months_for_analysis, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value5", placeholder = "20.0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.No_of_months_for_analysis, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Dead_storage_capacity, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Dead_storage_capacity, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value6", placeholder = "800", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Dead_storage_capacity, "", new { @class = "text-danger" })*@
+        </div>
+       
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Deadsoragecapacity, htmlAttributes: new { @class = "lable_froms" })
+             
+                @Html.EditorFor(model => model.Deadsoragecapacity, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value7", placeholder = "0.9", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @*@Html.ValidationMessageFor(model => model.Deadsoragecapacity, "", new { @class = "text-danger" })*@
+             
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Deadstoragecapacity, htmlAttributes: new { @class = "lable_froms" })
+         <br />
+                @Html.EditorFor(model => model.Deadstoragecapacity, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value8", placeholder = "189.59", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @*@Html.ValidationMessageFor(model => model.Deadstoragecapacity, "", new { @class = "text-danger" })*@
+           
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Deadstogecapacity, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Deadstogecapacity, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value9", placeholder = "15000.00", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Deadstogecapacity, "", new { @class = "text-danger" })*@
+        </div>
+      
+
+        <div class="">
+            @Html.LabelFor(model => model.Deadstoragecacity, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Deadstoragecacity, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value10", placeholder = "193.5", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Deadstoragecacity, "", new { @class = "text-danger" })*@
+        </div>
+      
+
+        <div class="">
+            @Html.LabelFor(model => model.Dead_storagecapacity, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Dead_storagecapacity, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value11", placeholder = "17000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Dead_storagecapacity, "", new { @class = "text-danger" })*@
+        </div>
+      
+
+        <div class="">
+            @Html.LabelFor(model => model.Dead_storagepacity, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Dead_storagepacity, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value12", placeholder = "1.7", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Dead_storagepacity, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.SpecicyStorage, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.SpecicyStorage, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value13", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.SpecicyStorage, "", new { @class = "text-danger" })*@
+        </div>
+       
+
+        <div class=" ">
+            @Html.LabelFor(model => model.No_of_data_in_EAC_table, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.No_of_data_in_EAC_table, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value14", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*  @Html.ValidationMessageFor(model => model.No_of_data_in_EAC_table, "", new { @class = "text-danger" })*@
+        </div>
+        
+
+        <div class=" ">
+            @Html.LabelFor(model => model.RequiredReliability, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.RequiredReliability, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value15", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.RequiredReliability, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Evaaccuracy, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Evaaccuracy, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value16", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Evaaccuracy, "", new { @class = "text-danger" })*@
+        </div>
+         
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Evaaccury, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Evaaccury, new { htmlAttributes = new { @class = "txtbox_froms", id = "floodfrm2value17", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Evaaccury, "", new { @class = "text-danger" })*@
+        </div>
+       
+
+        <br />
+     
+        <div>
+            <input type="button" class="btn-NIH_link" value="Retrieve" style="margin-left:120px;" />
+            <input type="submit" id="savbtnform2" class="btn-NIH_link" value="Save" style="margin-left:5px;" />
+            <input type="button" class="btn-NIH_link" value="Clear" id="floodfrmclr2"   style="margin-left:5px;" />
+            @Html.ActionLink("Next", "Flood_Operation_Form3", "Floodoper", new { @class = "btn-NIH_link", style = "margin-left:5px;" })
+            @Html.ActionLink("Back", "Flood_Operation_Form", "Floodoper", new { @class = "btn-NIH_link", style = "margin-left:5px;" })
+
+        </div>
+
+    }
+
+
+</div>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#floodfrmclr2").click(function () {
+                $("#floodform2")[0].reset();
+            })
+            //$("#floodform2").submit(function (e) {
+            //    var a = document.getElementById("floodfrm2value1").value;
+            //    var b = document.getElementById("floodfrm2value2").value;
+            //    var c = document.getElementById("floodfrm2value3").value;
+            //    var d = document.getElementById("floodfrm2value4").value;
+            //    var e = document.getElementById("floodfrm2value5").value;
+            //    var f = document.getElementById("floodfrm2value6").value;
+            //    var g = document.getElementById("floodfrm2value7").value;
+            //    var h = document.getElementById("floodfrm2value8").value;
+            //    var i = document.getElementById("floodfrm2value9").value;
+            //    var j = document.getElementById("floodfrm2value10").value;
+            //    var k = document.getElementById("floodfrm2value11").value;
+            //    var m = document.getElementById("floodfrm2value12").value;
+            //    var n = document.getElementById("floodfrm2value13").value;
+            //    var o = document.getElementById("floodfrm2value14").value;
+            //    var p = document.getElementById("floodfrm2value15").value;
+            //    var q = document.getElementById("floodfrm2value16").value;
+            //    var r = document.getElementById("floodfrm2value17").value;
+
+            //    var blob = new Blob([a, " \n ", b, " \n ", c, " \n ", d, " \n ", e, " \n ", f, " \n ", g, " \n ", h, " \n ", i, " \n ", j, " \n ", k, " \n ", m, " \n ", n, " \n ", o, " \n ", p, " \n ", q, " \n ", r,],
+
+            //        { type: "text/plain;charset=utf-8" });
+            //    saveAs(blob, "E://file.spi");
+            //    $("#floodform2")[0].reset();
+            //});
+        });
+
+    </script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />

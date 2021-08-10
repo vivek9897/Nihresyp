@@ -1,0 +1,113 @@
+﻿@model NIH_ReSyp.Models.EACTableApprox
+
+@{
+    ViewBag.Title = "Approximate EAC Table";
+}
+<div class="col-md-9  offset-2">
+    @using (Html.BeginForm("Approximate_EAC_Table", "EACTable", FormMethod.Post, new { @class = "", id = "eacform2", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+            Approximate EAC Table
+        </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="">
+    @Html.LabelFor(model => model.Title_of_problem, htmlAttributes: new { @class = "control-label col-md-5" })
+    <br />
+    @Html.EditorFor(model => model.Title_of_problem, new { htmlAttributes = new { @class = "form-control", id = "eacform2value1", placeholder = "Sample Data F For E-A-C Interpolation" } })
+    @Html.ValidationMessageFor(model => model.Title_of_problem, "", new { @class = "text-danger" })
+</div>
+       
+
+<div class=" ">
+    @Html.LabelFor(model => model.Name_of_Reservoir, htmlAttributes: new { @class = "control-label col-md-5" })
+    <br />
+    @Html.EditorFor(model => model.Name_of_Reservoir, new { htmlAttributes = new { @class = "form-control", id = "eacform2value2", placeholder = "Test" } })
+    @Html.ValidationMessageFor(model => model.Name_of_Reservoir, "", new { @class = "text-danger" })
+</div>
+        
+
+<div class=" ">
+    @Html.LabelFor(model => model.Numbersofyears, htmlAttributes: new { @class = "control-label col-md-5" })
+    <br />
+    @Html.EditorFor(model => model.Numbersofyears, new { htmlAttributes = new { @class = "form-control", id = "eacform2value3", placeholder = "252.987", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @*@Html.ValidationMessageFor(model => model.Numbersofyears, "", new { @class = "text-danger" })*@
+</div>
+       
+
+<div class=" ">
+    @Html.LabelFor(model => model.Reliability1, htmlAttributes: new { @class = "control-label col-md-5" })
+    <br />
+    @Html.EditorFor(model => model.Reliability1, new { htmlAttributes = new { @class = "form-control", id = "eacform2value4", placeholder = "280.419", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @Html.ValidationMessageFor(model => model.Reliability1, "", new { @class = "text-danger" })
+</div>
+       
+
+<div class=" ">
+    @Html.LabelFor(model => model.Reliability2, htmlAttributes: new { @class = "control-label col-md-5" })
+    <br />
+    @Html.EditorFor(model => model.Reliability2, new { htmlAttributes = new { @class = "form-control", id = "eacform2value5", placeholder = "81.024", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @Html.ValidationMessageFor(model => model.Reliability2, "", new { @class = "text-danger" })
+</div>
+      
+
+<div class=" ">
+    @Html.LabelFor(model => model.Reliability3, htmlAttributes: new { @class = "control-label col-md-5" })
+    <br />
+    @Html.EditorFor(model => model.Reliability3, new { htmlAttributes = new { @class = "form-control", id = "eacform2value6", placeholder = "680.648", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @Html.ValidationMessageFor(model => model.Reliability3, "", new { @class = "text-danger" })
+</div>
+      
+
+<div class=" ">
+    @Html.LabelFor(model => model.Reliability4, htmlAttributes: new { @class = "control-label col-md-5" })
+    <br />
+    @Html.EditorFor(model => model.Reliability4, new { htmlAttributes = new { @class = "form-control", id = "eacform2value7", placeholder = "254.00", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @Html.ValidationMessageFor(model => model.Reliability4, "", new { @class = "text-danger" })
+</div>
+     
+
+<div class=" ">
+    @Html.LabelFor(model => model.Reliability5, htmlAttributes: new { @class = "control-label col-md-5" })
+    <br />
+    @Html.EditorFor(model => model.Reliability5, new { htmlAttributes = new { @class = "form-control", id = "eacform2value8", placeholder = "2.00", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @Html.ValidationMessageFor(model => model.Reliability5, "", new { @class = "text-danger" })
+</div>
+         
+        <!-- Button -->
+        <div>
+            <input type="button" class="btn-NIH_link" value="Retrieve" />
+            <input type="submit" id="eac2frmbtn" class="btn-NIH_link" value="Save" />
+            <input type="button" class="btn-NIH_link" value="Clear" id="eacfrmclr2" />
+        </div>
+    }
+</div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#eacfrmclr2").click(function () {
+                $("#eacform2")[0].reset();
+            })
+            //$("#eacform2").submit(function (e) {
+            //    var a = document.getElementById("eacform2value1").value;
+            //    var b = document.getElementById("eacform2value2").value;
+            //    var c = document.getElementById("eacform2value3").value;
+            //    var d = document.getElementById("eacform2value4").value;
+            //    var e = document.getElementById("eacform2value5").value;
+            //    var f = document.getElementById("eacform2value6").value;
+            //    var g = document.getElementById("eacform2value7").value;
+            //    var h = document.getElementById("eacform2value8").value;
+            //    var blob = new Blob([a, " \n ", b, " \n ", c, " \n ", d, " \n ", e, " \n ", f, " \n ", g, " \n ", h],
+
+            //        { type: "text/plain;charset=utf-8" });
+            //    saveAs(blob, "E://file.spi");
+            //    $("#eacform2")[0].reset();
+            //});
+        });
+    </script>
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />

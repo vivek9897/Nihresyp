@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6209E1EE-080A-43CB-ABAE-398EAB6B233C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NIH_ReSyp</RootNamespace>
+    <AssemblyName>NIH_ReSyp</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>44346</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CapCompController.cs" />
+    <Compile Include="Controllers\ConsOperController.cs" />
+    <Compile Include="Controllers\EACTableController.cs" />
+    <Compile Include="Controllers\FloodoperController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HydroPowerController.cs" />
+    <Compile Include="Controllers\InflowestimationController.cs" />
+    <Compile Include="Controllers\ReservoirroutController.cs" />
+    <Compile Include="Controllers\ReservoirsediController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\capcompform1.cs" />
+    <Compile Include="Models\consoper1.cs" />
+    <Compile Include="Models\EACTableLinear.cs" />
+    <Compile Include="Models\Floodoper.cs" />
+    <Compile Include="Models\hydropower.cs" />
+    <Compile Include="Models\Inflow.cs" />
+    <Compile Include="Models\Reservoir-rout.cs" />
+    <Compile Include="Models\reservoirsedi1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\verticalMenu.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\css\font-awesome.css" />
+    <Content Include="fonts\css\font-awesome.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="layout\verticalMenu_Script\dist\vertical-responsive-menu.min.css" />
+    <Content Include="layout\verticalMenu_Script\dist\vertical-responsive-menu.min.js" />
+    <Content Include="layout\verticalMenu_Script\src\demo.css" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\css\font-awesome.css" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\css\font-awesome.min.css" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\normalize.css\normalize.css" />
+    <Content Include="layout\verticalMenu_Script\src\vertical-responsive-menu.css" />
+    <Content Include="layout\verticalMenu_Script\src\vertical-responsive-menu.js" />
+    <Content Include="lib\css\bootstrap.min.css" />
+    <Content Include="lib\css\bootstrap\mixins\_border-radius.css" />
+    <Content Include="lib\css\bootstrap\mixins\_screen-reader.css" />
+    <Content Include="lib\css\bootstrap\mixins\_visibility.css" />
+    <Content Include="lib\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="lib\css\bootstrap\_media.css" />
+    <Content Include="lib\css\style.css" />
+    <Content Include="lib\images\css\bootstrap.min.css" />
+    <Content Include="lib\images\css\bootstrap\mixins\_border-radius.css" />
+    <Content Include="lib\images\css\bootstrap\mixins\_screen-reader.css" />
+    <Content Include="lib\images\css\bootstrap\mixins\_visibility.css" />
+    <Content Include="lib\images\css\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="lib\images\css\bootstrap\_media.css" />
+    <Content Include="lib\images\css\style.css" />
+    <Content Include="lib\images\home.png" />
+    <Content Include="lib\images\logo.jpg" />
+    <Content Include="lib\js\bootstrap.min.css" />
+    <Content Include="lib\js\bootstrap.min.js" />
+    <Content Include="lib\js\css.css" />
+    <Content Include="lib\js\font-awesome.min.css" />
+    <Content Include="lib\js\jquery.min.js" />
+    <Content Include="lib\js\main.js" />
+    <Content Include="lib\js\popper.js" />
+    <Content Include="Properties\PublishProfiles\FolderProfile.pubxml.user" />
+    <Content Include="Properties\PublishProfiles\FolderProfile1.pubxml.user" />
+    <Content Include="Properties\PublishProfiles\FTPProfile.pubxml.user" />
+    <Content Include="Properties\PublishProfiles\IISProfile.pubxml.user" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="layout\verticalMenu_Script\src\sass\import\mixins.scss" />
+    <Content Include="layout\verticalMenu_Script\src\sass\import\variables.scss" />
+    <Content Include="layout\verticalMenu_Script\src\sass\vertical-responsive-menu.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\.bower.json" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\.gitignore" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\.npmignore" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\bower.json" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\css\font-awesome.css.map" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\fonts\FontAwesome.otf" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\animated.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\bordered-pulled.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\core.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\fixed-width.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\font-awesome.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\icons.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\larger.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\list.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\mixins.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\path.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\rotated-flipped.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\stacked.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\less\variables.less" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\font-awesome.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_animated.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_bordered-pulled.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_core.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_fixed-width.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_icons.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_larger.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_list.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_mixins.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_path.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_rotated-flipped.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_stacked.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\fontawesome\scss\_variables.scss" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\normalize.css\.bower.json" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\normalize.css\bower.json" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\normalize.css\LICENSE.md" />
+    <Content Include="layout\verticalMenu_Script\src\vendor\normalize.css\README.md" />
+    <Content Include="lib\css\.DS_Store" />
+    <Content Include="lib\css\bootstrap\.DS_Store" />
+    <Content Include="lib\css\bootstrap\mixins\.DS_Store" />
+    <Content Include="lib\fonts\.DS_Store" />
+    <Content Include="lib\images\.DS_Store" />
+    <Content Include="lib\images\css\.DS_Store" />
+    <Content Include="lib\images\css\bootstrap\.DS_Store" />
+    <Content Include="lib\images\css\bootstrap\mixins\.DS_Store" />
+    <Content Include="lib\images\fonts\.DS_Store" />
+    <Content Include="lib\scss\.DS_Store" />
+    <Content Include="lib\scss\bootstrap\.DS_Store" />
+    <Content Include="lib\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="lib\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="lib\scss\bootstrap\bootstrap.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="lib\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_overflow.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_stretched-link.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="lib\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="lib\scss\bootstrap\vendor\_rfs.scss" />
+    <Content Include="lib\scss\bootstrap\_alert.scss" />
+    <Content Include="lib\scss\bootstrap\_badge.scss" />
+    <Content Include="lib\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="lib\scss\bootstrap\_button-group.scss" />
+    <Content Include="lib\scss\bootstrap\_buttons.scss" />
+    <Content Include="lib\scss\bootstrap\_card.scss" />
+    <Content Include="lib\scss\bootstrap\_carousel.scss" />
+    <Content Include="lib\scss\bootstrap\_close.scss" />
+    <Content Include="lib\scss\bootstrap\_code.scss" />
+    <Content Include="lib\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="lib\scss\bootstrap\_dropdown.scss" />
+    <Content Include="lib\scss\bootstrap\_forms.scss" />
+    <Content Include="lib\scss\bootstrap\_functions.scss" />
+    <Content Include="lib\scss\bootstrap\_grid.scss" />
+    <Content Include="lib\scss\bootstrap\_images.scss" />
+    <Content Include="lib\scss\bootstrap\_input-group.scss" />
+    <Content Include="lib\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="lib\scss\bootstrap\_list-group.scss" />
+    <Content Include="lib\scss\bootstrap\_media.scss" />
+    <Content Include="lib\scss\bootstrap\_mixins.scss" />
+    <Content Include="lib\scss\bootstrap\_modal.scss" />
+    <Content Include="lib\scss\bootstrap\_nav.scss" />
+    <Content Include="lib\scss\bootstrap\_navbar.scss" />
+    <Content Include="lib\scss\bootstrap\_pagination.scss" />
+    <Content Include="lib\scss\bootstrap\_popover.scss" />
+    <Content Include="lib\scss\bootstrap\_print.scss" />
+    <Content Include="lib\scss\bootstrap\_progress.scss" />
+    <Content Include="lib\scss\bootstrap\_reboot.scss" />
+    <Content Include="lib\scss\bootstrap\_root.scss" />
+    <Content Include="lib\scss\bootstrap\_spinners.scss" />
+    <Content Include="lib\scss\bootstrap\_tables.scss" />
+    <Content Include="lib\scss\bootstrap\_toasts.scss" />
+    <Content Include="lib\scss\bootstrap\_tooltip.scss" />
+    <Content Include="lib\scss\bootstrap\_transitions.scss" />
+    <Content Include="lib\scss\bootstrap\_type.scss" />
+    <Content Include="lib\scss\bootstrap\_utilities.scss" />
+    <Content Include="lib\scss\bootstrap\_variables.scss" />
+    <Content Include="lib\scss\style.scss" />
+    <Content Include="libman.json" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile3.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile3.pubxml" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\FileSaver.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\NIH_RSype\Home.js" />
+    <Content Include="Scripts\tableHTMLExport.js" />
+    <Content Include="Scripts\vertical_menu.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\CapComp\Index.cshtml" />
+    <Content Include="Views\Shared\Index.cshtml" />
+    <Content Include="Views\CapComp\Sequent_Peak_Analysis.cshtml" />
+    <Content Include="Views\CapComp\Storage_Yield_Analysis.cshtml" />
+    <Content Include="Views\ConsOper\Conservation_Operation.cshtml" />
+    <Content Include="Views\ConsOper\Conservation_Operation2.cshtml" />
+    <Content Include="Views\ConsOper\Conservation_Operation3.cshtml" />
+    <Content Include="Views\ConsOper\Initial_Rule_Curve_Derivation.cshtml" />
+    <Content Include="Views\ConsOper\Probable_Flow_Estimation.cshtml" />
+    <Content Include="Views\EACTable\Approximate_EAC_Table.cshtml" />
+    <Content Include="Views\EACTable\Linear_Interpolation_Form.cshtml" />
+    <Content Include="Views\Floodoper\Flood_Operation_Form.cshtml" />
+    <Content Include="Views\Floodoper\Flood_Operation_Form2.cshtml" />
+    <Content Include="Views\Floodoper\Flood_Operation_Form3.cshtml" />
+    <Content Include="Views\HydroPower\Hydro_Power_Form.cshtml" />
+    <Content Include="Views\Inflowestimation\Inflow_Estimation_form.cshtml" />
+    <Content Include="Views\Inflowestimation\Inflow_Estimation_form2.cshtml" />
+    <Content Include="Views\Reservoirrout\Reservoir_Rout_Form.cshtml" />
+    <Content Include="Views\Reservoirsedi\New_Zero_Elevetion.cshtml" />
+    <Content Include="Views\Reservoirsedi\Sediment_Profile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2531</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5050/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

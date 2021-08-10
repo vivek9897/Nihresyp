@@ -1,0 +1,13 @@
+﻿body {
+    font-family: "Lato" !important;
+    background-color: #ffffff;
+  
+}
+.title {
+    text-align: center;
+    font-size: 2.2rem;
+    padding-top: 15px;
+    font-weight: 700 !important;
+    font-family: "Lato" !important;
+}
+

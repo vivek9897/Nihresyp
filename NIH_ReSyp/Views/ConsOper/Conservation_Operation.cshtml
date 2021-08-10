@@ -1,0 +1,277 @@
+﻿@model NIH_ReSyp.Models.ConservationOperation
+
+@{
+    ViewBag.Title = "Conservation Operation";
+}
+
+<div class="col-md-9  offset-2">
+
+    @using (Html.BeginForm("Conservation_Operation", "ConsOper", FormMethod.Post, new { @class = "", id = "formcons3", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+                Data Entry For Conservation Operation
+            </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class=" ">
+            @Html.LabelFor(model => model.Titleof_problem, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Titleof_problem, new { htmlAttributes = new { @class = " txtbox_froms", id = "titleproblem", placeholder = "Monthly Operation Simulation of a System" } })
+            @Html.ValidationMessageFor(model => model.Titleof_problem, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.numberof, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.numberof, new { htmlAttributes = new { @class = " txtbox_froms", id = "numberofstructures", placeholder = "6", type = "number", min = "0", max = "1000000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.numberof, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.staringyear, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.staringyear, new { htmlAttributes = new { @class = " txtbox_froms", id = "staringyearofsimulation", placeholder = "1967", type = "number", min = "1900", max = "2020", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value   < 1) ? (1/1) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.staringyear, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.staringmonth, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.staringmonth, new { htmlAttributes = new { @class = "txtbox_froms ", id = "startingmonthofsimulation", placeholder = "6", type = "number", min = "1", max = "12", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value   < 1) ? (1/1) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.staringmonth, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class=" ">
+            @Html.LabelFor(model => model.timestep, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.timestep, new { htmlAttributes = new { @class = "txtbox_froms ", id = "timestep", placeholder = "1", type = "number", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.timestep, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.numberofperiod, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.numberofperiod, new { htmlAttributes = new { @class = "txtbox_froms ", id = "numberofperiodsofsimulation", placeholder = "31", type = "number", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.numberofperiod, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Idofstructure, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Idofstructure, new { htmlAttributes = new { @class = " txtbox_froms", id = "idofstructure", placeholder = "1", type = "number", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Idofstructure, "", new { @class = "text-danger" })
+
+        </div>
+
+
+        <br />
+        <div>
+            <input type="file" id="fileupload" style="display:none;" />
+            <input type="file" id="outupload" style="display:none;" />
+
+            <input type="button" class="btn-NIH_link  " onclick="document.getElementById('fileupload').click()" value="Retrieve" style="margin-left:120px;" />
+            <input type="submit" class="btn-NIH_link " value="Save" id="savebtncons3" style="margin-left:3px;" />
+            <input type="button" class="btn-NIH_link " value="Clear" id="consfrmclr3" style="margin-left:3px;" />
+
+            @Html.ActionLink("Next", "Conservation_Operation2", "ConsOper", new { @class = "btn-NIH_link", style = "margin-left:3px;" })
+            <input type="button" onclick="document.getElementById('outupload').click()" class="btn-NIH_link" value="View file" id="outdata" style="margin-left:120px;" />
+            <input type="button" id="Getdata" class="btn-NIH_link" value="Get Output file" />
+            @*<a href="ConsOper/filldataform4" class="" id="next1">Next</a>*@
+            @*@Html.ActionLink("Close", "Index", "CapComp", new { @class = "btn btn btn-danger btn-lg col-lg-offset-1" })*@
+
+            @*<input type="button" class="btn btn btn-info btn-lg col-lg-offset-1" value="next" id="next1" />*@
+
+
+        </div>
+    }
+
+    <div>
+
+    
+
+
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+<script>
+
+
+
+    var input = document.getElementById("outupload");
+    var output = document.getElementById("content-target");
+
+
+    input.addEventListener("change", function () {
+        if (this.files && this.files[0]) {
+            var myFile = this.files[0];
+            var reader = new FileReader();
+
+            reader.addEventListener('load', function (e) {
+
+                var myWindow = window.open("", "", "width=600,height=450");
+                newContent = myWindow.document.createElement("textarea");
+                newContent.textContent = e.target.result;
+                myWindow.document.body.appendChild(newContent);
+
+
+            });
+
+            reader.readAsBinaryString(myFile);
+        }
+    });
+
+
+
+
+
+    var customers;
+
+</script>
+
+<script>
+   document.getElementById('Getdata').onclick = function () {
+ $.ajax({
+   url: '@Url.Action("Output_file_Conservation", "ConsOper")',
+   type: 'POST',
+   dataType: 'json',
+   cache: false,
+
+     success: function (results) {
+         alert("output fetched succefully"),
+       console.log(results)
+
+     },
+
+   });
+   }
+</script>
+<script type="text/javascript">
+
+    document.getElementById('fileupload').onchange = function () {
+
+        var file = this.files[0];
+
+        var reader = new FileReader();
+        reader.onload = function (progressEvent) {
+            // Entire file
+            //  console.log(this.result);
+            let jsonData = JSON.stringify(this.result);
+            //   console.log(jsonData);
+            // By lines
+            var lines = this.result.split(' ');
+            for (var line = 0; line < lines.length; line++) {
+                // console.log(lines[line]);
+
+                // console.log(lines.length)
+
+            }
+
+            console.log(lines[1])
+            console.log(lines[2])
+            console.log(lines[3])
+            console.log(lines[13])
+            console.log(lines[26])
+            console.log(lines[39])
+            console.log(lines[49])
+            console.log(lines[58])
+
+            document.getElementById("TitleofProblem").value = lines[1]
+            document.getElementById("NameofReservoir").value = lines[2]
+            document.getElementById("StartingYear").value = lines[3]
+            document.getElementById("StartingMonth").value = lines[13]
+            document.getElementById("NumberOfYearsForAnalysis").value = lines[26]
+            document.getElementById("DemandVaryEachYear").value = lines[58]
+            document.getElementById("FactorForConvertingInflow").value = lines[39]
+            document.getElementById("FactorForConvertingDemand").value = lines[49]
+
+
+
+        };
+        reader.readAsText(file);
+
+    };
+    </script>
+
+<script>
+        $(document).ready(function () {
+            $("#specifybtn").click(function () {
+                $("#constbl1").show();
+                $("#formcons3").hide();
+            })
+            $("#Backeacbtn").click(function () {
+            $("#constbl1").hide();
+                $("#formcons3").show();
+            })
+            $("#evaporationbtn").click(function () {
+            $("#constbl2").show();
+                $("#formcons3").hide();
+            })
+            $("#Backbtnevaporation").click(function () {
+            $("#constbl2").hide();
+                $("#formcons3").show();
+            })
+            $("#consfrmclr3").click(function () {
+            $("#formcons3")[0].reset();
+            })
+            $("#inflowdatabtn").click(function () {
+            $("#constbl3").show();
+                $("#formcons3").hide();
+            })
+            $("#inflowback").click(function () {
+            $("#constbl3").hide();
+                $("#formcons3").show();
+            })
+
+
+
+
+
+            //$("#formcons3").submit(function (e) {
+            //    var title = document.getElementById("titleproblem").value;
+            //    var name = document.getElementById("numberofstructures").value;
+            //    var strtyear = document.getElementById("staringyearofsimulation").value;
+            //    var strtmnth = document.getElementById("startingmonthofsimulation").value;
+            //    var timestp = document.getElementById("timestep").value;
+            //    var numberofsimu = document.getElementById("numberofperiodsofsimulation").value;
+            //    var idofstructure = document.getElementById("idofstructure").value;
+
+
+            //    var TitleOFTheProblem = title.padStart(0, ' ');
+            //    var Nameofthereservoir = name.padStart(0, ' ');
+            //    var startingyearofsimulation = strtyear.padStart(0, ' ');
+            //    var startingmonthofsimulation = strtmnth.padStart(8, ' ');
+            //    var TimeStep = timestp.padStart(3, ' ');
+            //    var numberofsimulation = numberofsimu.padStart(3, ' ');
+            //    var idofthestructure = idofstructure.padStart(7, ' ');
+
+            //    var blob = new Blob([TitleOFTheProblem,
+            //        Nameofthereservoir,
+            //        startingyearofsimulation,
+            //        startingmonthofsimulation,
+            //        TimeStep,
+            //        numberofsimulation,
+            //        idofthestructure
+
+
+            //    ],
+
+            //        { type: "text/plain;charset=utf-8" });
+
+            //    saveAs(blob, "E://file.spi");
+            //    $("#formcons3")[0].reset();
+            //});
+        });
+
+</script>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />

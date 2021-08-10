@@ -1,0 +1,380 @@
+﻿@model NIH_ReSyp.Models.Reservoir_rout
+
+@{
+    ViewBag.Title = "Reservoir Rout Form";
+}
+<div class="col-md-9  offset-2">
+    @using (Html.BeginForm("Reservoir_Rout_Form", "Reservoirrout", FormMethod.Post, new { @class = "form-horizontal", id = "reservoirform", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+
+        @Html.AntiForgeryToken()
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+            Data Entry For Reservoir Routing
+        </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="">
+            @Html.LabelFor(model => model.Title_of_problem, htmlAttributes: new { @class = "control-label col-md-5" })
+            <br />
+                @Html.EditorFor(model => model.Title_of_problem, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval1", placeholder = "Sample Data For Reservoir Routing" } })
+                @Html.ValidationMessageFor(model => model.Title_of_problem, "", new { @class = "text-danger" })
+            </div>
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name_of_Reservoir, htmlAttributes: new { @class = "control-label col-md-5" })
+            <br />
+            @Html.EditorFor(model => model.Name_of_Reservoir, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval2", placeholder = "Test Reservoir" } })
+            @Html.ValidationMessageFor(model => model.Name_of_Reservoir, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numbersofyears, htmlAttributes: new { @class = "control-label col-md-5" })
+            <br />
+            @Html.EditorFor(model => model.Numbersofyears, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval3", placeholder = "13", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @* @Html.ValidationMessageFor(model => model.Numbersofyears, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability1, htmlAttributes: new { @class = "control-label col-md-5" })
+            <br />
+            @Html.EditorFor(model => model.Reliability1, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval4", placeholder = "16", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability1, "", new { @class = "text-danger" })
+        </div>
+     
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability2, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Reliability2, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval5", placeholder = "6", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Reliability2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability3, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.DropDownListFor(model => model.Reliability3, new SelectList(ViewBag.list), htmlAttributes: new { @class = "form-control", id = "reservoirformval6" })
+                @*@Html.EditorFor(model => model.Reliability3, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Reliability3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability4, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Reliability4, new { htmlAttributes = new { @class = "form-control", placeholder = "157", id = "reservoirformval7", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Reliability4, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability5, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Reliability5, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval8", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Reliability5, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability6, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Reliability6, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval9", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Reliability6, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability7, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Reliability7, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval10", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Reliability7, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability8, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Reliability8, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval11", placeholder = "1000000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Reliability8, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reliability9, htmlAttributes: new { @class = "control-label col-md-5" })
+            <div class="col-md-5">
+                @Html.EditorFor(model => model.Reliability9, new { htmlAttributes = new { @class = "form-control", id = "reservoirformval12", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Reliability9, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="col-lg-offset-6">
+            <input type="button" class="btn btn-success col-md-3 " value="E-C-RC Table" id="inflowdataresrvoirbtn" />
+            <input type="button" class="btn btn-success col-md-3 col-lg-offset-1 " value="Inflow" id="inflowdatabtnreser" />
+        </div>
+        <br />
+        <br />
+        <br />
+        <div>
+            <input type="button" class="btn-NIH_link col-md-offset-5" value="Retrieve" />
+            <input type="submit" class="btn-NIH_link col-md-offset-1" value="Save" id="sbmtbtnrout" />
+            <input type="button" class="btn-NIH_link col-md-offset-1" value="Clear" id="reserfrmclr" />
+        </div>
+
+    }
+
+
+    <div>
+
+        <div style="display:none;" id="containertblrsesrvoir">
+
+
+
+
+        </div>
+
+        <input type="button" class="btn-NIH_link " value="Back" id="EACrTablebackbtn" style="display:none; margin-left:450px;" />
+        <input type="button" value="Submit Values" class="btn-NIH_link" id="EACrTablesubmitbtn" style="display:none; margin-right:300px;" />
+    </div>
+
+
+    <div>
+
+        <div style="display:none;" id="containertblrsesrvoirinflow">
+
+
+
+
+        </div>
+
+        <input type="button" class="btn-NIH_link " value="Back" id="inflowTablebackbtn" style="display:none; margin-left:450px;" />
+        <input type="button" value="Submit Values" class="btn-NIH_link" id="INFLOWTablesubmitbtn" style="display:none; margin-right:300px;" />
+    </div>
+
+</div>
+
+
+
+    <!-- /.container -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("#inflowdataresrvoirbtn").click(function () {
+            SubmitRoutTable();
+            $("#containertblrsesrvoir").show();
+            $("#EACrTablebackbtn").show();
+            $("#EACrTablesubmitbtn").show();
+            $("#reservoirform").hide();
+        })
+        $("#EACrTablebackbtn").click(function () {
+            $("#containertblrsesrvoir").hide();
+            $("#reservoirform").show();
+            $("#EACrTablebackbtn").hide();
+            $("#EACrTablesubmitbtn").hide();
+        });
+
+        $("#EACrTablesubmitbtn").click(function () {
+            SubmitReseervoirEAC();
+            $("#containertblrsesrvoir").hide();
+            $("#reservoirform").show();
+            $("#EACrTablebackbtn").hide();
+            $("#EACrTablesubmitbtn").hide();
+        });
+
+        $("#reserfrmclr").click(function () {
+            $("#reservoirform")[0].reset();
+        });
+        $("#inflowdatabtnreser").click(function () {
+            SubmitRoutTableiNFLOW();
+            $("#containertblrsesrvoirinflow").show();
+            $("#inflowTablebackbtn").show();
+            $("#INFLOWTablesubmitbtn").show();
+            $("#reservoirform").hide();
+        });
+        $("#inflowTablebackbtn").click(function () {
+            $("#containertblrsesrvoirinflow").hide();
+            $("#reservoirform").show();
+            $("#inflowTablebackbtn").hide();
+            $("#INFLOWTablesubmitbtn").hide();
+        });
+
+        $("#INFLOWTablesubmitbtn").click(function () {
+            SubmitReseervoirInflow();
+            $("#containertblrsesrvoirinflow").hide();
+            $("#reservoirform").show();
+            $("#inflowTablebackbtn").hide();
+            $("#INFLOWTablesubmitbtn").hide();
+        });
+
+
+
+         function SubmitRoutTableiNFLOW() {
+            var Obj = {
+                Reliability1: parseInt($('#reservoirformval4').val()),
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetReservoirRoutInflow", "Reservoirrout")',
+                data: JSON.stringify({ 'rout': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += ' <table class="table col-lg-offset-3" style="text-align:center; width:600px" id="RoutINFLOWTable">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Sequence</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Inflow</th>';
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+
+                        htmlNew += '<td style="font-size: 12px" id="values">' + item.Sequence + '</td>';
+                        htmlNew += '<td style="font-size: 12px" contenteditable="true">' + item.Inflow + '</td>';
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+                    $('#containertblrsesrvoirinflow').html(htmlNew);
+
+
+                }
+            });
+        }
+
+          function SubmitReseervoirInflow() {
+            var customers = new Array();
+              $("#RoutINFLOWTable TBODY TR").each(function () {
+                var row = $(this);
+                var customer = {};
+
+                  customer.Sequence = parseInt(row.find("TD").eq(0).html());
+                  customer.Inflow = parseInt(row.find("TD").eq(1).html());
+
+
+                customers.push(customer);
+                //console.log(customers)
+
+                  dataToPost = JSON.stringify({ inflowTables: customers });
+
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("RoutInflow", "Reservoirrout")',
+            traditional: true,
+             data: dataToPost,
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {
+                    console.log(r);
+
+            }
+            });
+            });
+        }
+
+
+       function SubmitRoutTable() {
+            var Obj = {
+                Numbersofyears: parseInt($('#reservoirformval3').val()),
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetReservoirRout", "Reservoirrout")',
+                data: JSON.stringify({ 'rout': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += ' <table class="table col-lg-offset-3" style="text-align:center; width:600px" id="RoutEACTable">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Elevation</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Capacity</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Rel.Capacity</th>';
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+
+
+                        htmlNew += '<td style="font-size: 12px" id="values2" contenteditable="true">' + item.Elevation + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values" contenteditable="true">' + item.Capacity + '</td>';
+                        htmlNew += '<td style="font-size: 12px" contenteditable="true">' + item.RelCapacity + '</td>';
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+                    $('#containertblrsesrvoir').html(htmlNew);
+
+
+                }
+            });
+        }
+
+         function SubmitReseervoirEAC() {
+            var customers = new Array();
+             $("#RoutEACTable TBODY TR").each(function () {
+                var row = $(this);
+                var customer = {};
+
+                 customer.Elevation = parseInt(row.find("TD").eq(0).html());
+                 customer.Capacity = parseInt(row.find("TD").eq(1).html());
+                 customer.RelCapacity = parseInt(row.find("TD").eq(2).html());
+
+
+                customers.push(customer);
+                //console.log(customers)
+
+                 dataToPost = JSON.stringify({ ecrctables: customers });
+
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("GetEacrTableResult", "Reservoirrout")',
+            traditional: true,
+             data: dataToPost,
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {
+                    console.log(r);
+
+            }
+            });
+            });
+        }
+    });
+    </script>
+
+
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />

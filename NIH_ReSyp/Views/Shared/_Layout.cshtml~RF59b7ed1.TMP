@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - NIH_ReSyP</title>
+
+   
+
+    <link href="~/Content/verticalMenu.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/fonts/css/font-awesome.min.css" rel="stylesheet" />
+
+
+    <link href="~/lib/js/bootstrap.min.css" rel="stylesheet" />
+
+
+    <link href="~/lib/js/css.css" rel="stylesheet" />
+
+    <link href="~/lib/js/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/css/style.css">
+    @*<script src="~/lib/js/jquery.min.js"></script>*@
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+</head>
+<body>
+
+    @*<div class="p-4" style="background-color:aquamarine">
+        <h3 class=" text-center">NIH</h3>
+
+    </div>*@
+
+    <div class="wrapper d-flex align-items-stretch">
+
+
+        <nav id="sidebar">
+            <div class="p-4 pt-5">
+
+                <ul class="list-unstyled components mb-5">
+                    <li class="">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cap-Comp</a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li>  @Html.ActionLink("Sequent-Peak Analysis", "Sequent_Peak_Analysis", "CapComp")</li>
+                            <li> @Html.ActionLink("Storage-Yield Analysis", "Storage_Yield_Analysis", "CapComp")</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#Cons-Oper" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Cons-Oper</a>
+                        <ul class="collapse list-unstyled" id="Cons-Oper">
+                            <li> @Html.ActionLink("Probable Flow Estimation", "Probable_Flow_Estimation", "ConsOper")</li>
+                            <li> @Html.ActionLink("Initial Rule Curve Derivation", "Initial_Rule_Curve_Derivation", "ConsOper")</li>
+                            <li> @Html.ActionLink("Conservation Operation", "Conservation_Operation", "ConsOper")</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#Flood-Oper" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Flood-Oper</a>
+                        <ul class="collapse list-unstyled" id="Flood-Oper">
+                            <li>@Html.ActionLink("Flood Operation Form", "Flood_Operation_Form", "Floodoper")</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#Reservoir-Rout" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Reservoir-Rout</a>
+                        <ul class="collapse list-unstyled" id="Reservoir-Rout">
+                            <li>@Html.ActionLink("Reservoir-Rout Form", "Reservoir_Rout_Form", "Reservoirrout")</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#Hydro" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Hydro-Power</a>
+                        <ul class="collapse list-unstyled" id="Hydro">
+                            <li> @Html.ActionLink("Hydro Power Form", "Hydro_Power_Form", "HydroPower")</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#Reservoir" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Reservoir-Sedi</a>
+                        <ul class="collapse list-unstyled" id="Reservoir">
+                            <li> @Html.ActionLink("New-Zero Elevetion", "New_Zero_Elevetion", "Reservoirsedi")</li>
+                            <li> @Html.ActionLink("Sediment Profile", "Sediment_Profile", "Reservoirsedi")</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#E-A-C" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">E-A-C Table</a>
+                        <ul class="collapse list-unstyled" id="E-A-C">
+                            <li> @Html.ActionLink("Linear Interpolation", "Linear_Interpolation_Form", "EACTable")</li>
+                            <li> @Html.ActionLink("Approximate EAC Table", "Approximate_EAC_Table", "EACTable")</li>
+                        </ul>
+
+                    <li>
+                        <a href="#Inflow" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Inflow Estimation</a>
+                        <ul class="collapse list-unstyled" id="Inflow">
+                            <li>@Html.ActionLink("Inflow Estimation with Negative flow correction", "Inflow_Estimation_form", "Inflowestimation")</li>
+                            <li>@Html.ActionLink("Inflow Estimation using Rate of Rise", "Inflow_Estimation_form2", "Inflowestimation")</li>
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#Help" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Help</a>
+                        <ul class="collapse list-unstyled" id="Help">
+                            <li><a href="#">Help ABout NIH REsYP</a></li>
+                            <li><a href="#">Clear Buffer Data</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+
+
+            </div>
+        </nav>
+
+
+
+        <div id="content" class="  ">
+
+
+            <div id="content24">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary" style="background-color:#fff !important; color:black">
+               ||| 
+                    <span class="sr-only">Toggle Menu</span>
+                </button>
+
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+            <div id="content48">
+                <p style="margin-top:5px; font-size:12px;">
+
+                    @if (ViewContext.RouteData.Values["controller"].ToString() == "Home")
+                    {
+                        @Html.Label(ViewContext.RouteData.Values["controller"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), ViewContext.RouteData.Values["controller"].ToString())
+                    }
+
+                    @if (ViewContext.RouteData.Values["controller"].ToString() != "Home")
+                    {
+                        @:Home > @Html.Label(ViewContext.RouteData.Values["controller"].ToString(), ViewContext.RouteData.Values["controller"].ToString(), ViewContext.RouteData.Values["controller"].ToString())
+                        if (ViewContext.RouteData.Values["action"].ToString() != "Index")
+                        {
+                            @:> @Html.Label(ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["action"].ToString(), ViewContext.RouteData.Values["controller"].ToString())
+                        }
+                    }
+                </p>
+
+
+            </div>
+
+
+            <div id="content242">
+                <ul class="menu-icon pull-right" style="list-style-type:none;">
+
+
+                    <li class="" style="color:black;">
+                        @Html.ActionLink("Home", "Index", "Home")
+                    </li>
+
+                </ul>
+            </div>
+
+            <hr style="margin-top:40px; height:2px; color:black;  " />
+
+            <div style="margin-top:20px;">
+
+                @RenderBody()
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+
+    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+
+    
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/lib/js/popper.js"></script>
+    <script src="~/lib/js/bootstrap.min.js"></script>
+    <script src="~/lib/js/main.js"></script>
+
+    <script src="~/Scripts/vertical_menu.js"></script>
+    <script src="~/Scripts/FileSaver.js"></script>
+
+</body>
+</html>

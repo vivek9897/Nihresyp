@@ -1,0 +1,325 @@
+﻿@model NIH_ReSyp.Models.ProbableFlowEstimation
+
+@{
+    ViewBag.Title = "Probable Flow Estimation";
+}
+
+<div class="col-md-9  offset-2">
+    @using (Html.BeginForm("Probable_Flow_Estimation", "ConsOper", FormMethod.Post, new { @class = "", id = "formcons1", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+                Data Entry For probable Flow Estimation
+            </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class=" ">
+            @Html.LabelFor(model => model.Titlem, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Titlem, new { htmlAttributes = new { @class = " txtbox_froms", id = "titleofproblem", placeholder = "Monthly Inflows For Halali Dam" } })
+            @Html.ValidationMessageFor(model => model.Titlem, "", new { @class = "text-danger" })
+        </div>
+
+
+        <div class=" ">
+            @Html.LabelFor(model => model.NmeofReservoir, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.NmeofReservoir, new { htmlAttributes = new { @class = " txtbox_froms ", id = "Nameofreservoir", placeholder = "Test Reservoir" } })
+            @Html.ValidationMessageFor(model => model.NmeofReservoir, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Numbersofyears, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Numbersofyears, new { htmlAttributes = new { @class = " txtbox_froms ", id = "numberofyear", placeholder = "20", type = "number", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Numbersofyears, "", new { @class = "text-danger" })
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Reliability1, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Reliability1, new { htmlAttributes = new { @class = " txtbox_froms ", id = "Reliabitylevel1", placeholder = "50", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability1, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Reliability2, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Reliability2, new { htmlAttributes = new { @class = " txtbox_froms ", id = "Reliabitylevel2", placeholder = "60", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability2, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Reliability3, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliability3, new { htmlAttributes = new { @class = "  txtbox_froms", id = "Reliabitylevel3", placeholder = "70", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability3, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Reliability4, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Reliability4, new { htmlAttributes = new { @class = " txtbox_froms ", id = "Reliabitylevel4", placeholder = "75", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability4, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Reliability5, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Reliability5, new { htmlAttributes = new { @class = " txtbox_froms ", id = "Reliabitylevel5", placeholder = "80", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability5, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Reliability6, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Reliability6, new { htmlAttributes = new { @class = " txtbox_froms ", id = "Reliabitylevel6", placeholder = "90", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Reliability6, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            <input type="button" id="consinflowvalues" class=" btn-NIH_link" value="Inflow Values" style="margin-left:165px;" />
+        </div>
+
+
+        <div>
+            <input type="file" id="fileupload" style="display:none;" />
+            <input type="file" id="outupload" style="display:none;" />
+
+            <input type="button" class="btn-NIH_link" value="Retrieve" onclick="document.getElementById('fileupload').click()" style="margin-left:140px;" />
+            <input type="submit" class="btn-NIH_link" value="Save" id="saveformconsoper" style="margin-left:0px;" />
+            <input type="button" class="btn-NIH_link" value="Clear" id="consfrmclr1" style="margin-left:0px;" />
+            <input type="button" onclick="document.getElementById('outupload').click()" class="btn-NIH_link" value="View file" id="outdata" style="margin-left:120px;" />
+            <input type="button" id="Getdata" class="btn-NIH_link" value="Get Output file" />
+        </div>
+
+    }
+
+
+    <div>
+
+        <div style="display:none;" id="INFLOWTable">
+
+
+
+
+        </div>
+
+        <input type="button" class="btn-NIH_link " value="Back" id="Backbtninflowvalue" style="display:none; margin-left:80px;" />
+        <input type="button" value="Submit Values" class="btn-NIH_link" id="btnsbmtInflowvalue" style="display:none;  " />
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+
+
+
+    var input = document.getElementById("outupload");
+    var output = document.getElementById("content-target");
+
+
+    input.addEventListener("change", function () {
+        if (this.files && this.files[0]) {
+            var myFile = this.files[0];
+            var reader = new FileReader();
+
+            reader.addEventListener('load', function (e) {
+
+                var myWindow = window.open("", "", "width=600,height=450");
+                newContent = myWindow.document.createElement("textarea");
+                newContent.textContent = e.target.result;
+                myWindow.document.body.appendChild(newContent);
+
+
+            });
+
+            reader.readAsBinaryString(myFile);
+        }
+    });
+
+
+
+
+
+    var customers;
+
+</script>
+
+<script>
+   document.getElementById('Getdata').onclick = function () {
+ $.ajax({
+   url: '@Url.Action("Output_file_Probableflow", "ConsOper")',
+   type: 'POST',
+   dataType: 'json',
+   cache: false,
+
+     success: function (results) {
+         alert("output fetched succefully"),
+       console.log(results)
+
+     },
+
+   });
+   }
+</script>
+<script type="text/javascript">
+
+    document.getElementById('fileupload').onchange = function () {
+
+        var file = this.files[0];
+
+        var reader = new FileReader();
+        reader.onload = function (progressEvent) {
+            // Entire file
+            //  console.log(this.result);
+            let jsonData = JSON.stringify(this.result);
+            //   console.log(jsonData);
+            // By lines
+            var lines = this.result.split(' ');
+            for (var line = 0; line < lines.length; line++) {
+                // console.log(lines[line]);
+
+                // console.log(lines.length)
+
+            }
+
+            console.log(lines[1])
+            console.log(lines[2])
+            console.log(lines[3])
+            console.log(lines[13])
+            console.log(lines[26])
+            console.log(lines[39])
+            console.log(lines[49])
+            console.log(lines[58])
+
+            document.getElementById("TitleofProblem").value = lines[1]
+            document.getElementById("NameofReservoir").value = lines[2]
+            document.getElementById("StartingYear").value = lines[3]
+            document.getElementById("StartingMonth").value = lines[13]
+            document.getElementById("NumberOfYearsForAnalysis").value = lines[26]
+            document.getElementById("DemandVaryEachYear").value = lines[58]
+            document.getElementById("FactorForConvertingInflow").value = lines[39]
+            document.getElementById("FactorForConvertingDemand").value = lines[49]
+
+
+
+        };
+        reader.readAsText(file);
+
+    };
+
+</script>
+<script>
+    $(document).ready(function () {
+        $("#consinflowvalues").click(function () {
+            $("#INFLOWTable").show();
+            $("#formcons1").hide();
+            Inflowvaluesof();
+            $("#Backbtninflowvalue").show();
+            $("#btnsbmtInflowvalue").show();
+        })
+        $("#Backbtninflowvalue").click(function () {
+            $("#formcons1").show();
+            $("#INFLOWTable").hide();
+            $("#Backbtninflowvalue").hide();
+            $("#btnsbmtInflowvalue").hide();
+        });
+        $("#btnsbmtInflowvalue").click(function () {
+            SubmtFlowtable();
+            $("#formcons1").show();
+            $("#INFLOWTable").hide();
+            $("#Backbtninflowvalue").hide();
+            $("#btnsbmtInflowvalue").hide();
+        });
+        $("#consfrmclr1").click(function () {
+            $("#formcons1")[0].reset();
+        });
+
+
+        function Inflowvaluesof() {
+            var Obj = {
+                Numbersofyears: parseInt($('#numberofyear').val()),
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetFlowEstimation", "ConsOper")',
+                data: JSON.stringify({ 'flowEstimation': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += ' <table class="table" style=" text-align:center; width:300px" id="flowtable">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+                    htmlNew += '  <th class="col-md-2" style="text-align:center">Year</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Inflow</th>';
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+
+                        htmlNew += '<td style="font-size: 12px" contenteditable="true">' + item.year + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values2" contenteditable="true">' + item.Inflow+ '</td>';
+
+
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+                    $('#INFLOWTable').html(htmlNew);
+
+
+                }
+            });
+        }
+        function SubmtFlowtable() {
+            var customers = new Array();
+            $("#flowtable TBODY TR").each(function () {
+                var row = $(this);
+                var customer = {};
+                customer.year = parseInt(row.find("TD").eq(0).html());
+                customer.Inflow = parseInt(row.find("TD").eq(1).html());
+
+                customers.push(customer);
+                //console.log(customers)
+
+                dataToPost = JSON.stringify({ numberofinflowsnew: customers });
+
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("GetInflowResult", "ConsOper")',
+            traditional: true,
+             data: dataToPost,
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {
+                    console.log(r);
+
+            }
+            });
+            });
+        }
+    })
+</script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />

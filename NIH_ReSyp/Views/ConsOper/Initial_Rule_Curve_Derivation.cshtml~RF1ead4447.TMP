@@ -1,0 +1,736 @@
+﻿@model NIH_ReSyp.Models.InitialRuleCurveDerivation
+
+@{
+    ViewBag.Title = "Initial Rule Curve Derivation";
+}
+
+<div class="col-md-10  offset-1">
+    @using (Html.BeginForm("Initial_Rule_Curve_Derivation", "ConsOper", FormMethod.Post, new { @class = "form-horizontal", id = "consoperform", style = "font-size:15px;font-style:oblique" }))
+    {
+        @Html.AntiForgeryToken()
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+            Data Entry For Initial Rule Of Derivation
+        </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class=" ">
+            @Html.LabelFor(model => model.Titleproblemreservoir, htmlAttributes: new { @class = "control-label col-md-4" })
+         <br />
+                @Html.EditorFor(model => model.Titleproblemreservoir, new { htmlAttributes = new { @class = "form-control", id = "thetitleofproblem", placeholder = "Rule Curve Derivation For Bargi Reservoir" } })
+                @*@Html.ValidationMessageFor(model => model.Title_of_problem, "", new { @class = "text-danger" })*@
+        </div>
+       
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Name_of_Reservoir, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.Name_of_Reservoir, new { htmlAttributes = new { @class = "form-control", id = "nameofreservoir", placeholder = "Bargi" } })
+            @*@Html.ValidationMessageFor(model => model.Name_of_Reservoir, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Starting_year, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.DropDownListFor(model => model.Starting_year, new SelectList(ViewBag.list), htmlAttributes: new { @class = "form-control", id = "methodofsupply" })
+            @*@Html.EditorFor(model => model.Starting_year, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*@Html.ValidationMessageFor(model => model.Starting_year, "", new { @class = "text-danger" })*@
+        </div>
+       
+        <input type="button" class="btn btn-success pull-right col-md-3" value="E-A-C Table" id="eactblbtn" />
+        <div class=" ">
+            @Html.LabelFor(model => model.Starting_Month, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.Starting_Month, new { htmlAttributes = new { @class = "form-control", id = "minimumdrawdownlevel", placeholder = "430.55", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Starting_Month, "", new { @class = "text-danger" })*@
+
+        </div>
+        <input type="button" class="btn btn-success pull-right col-md-3" value="Evaporation Depths" id="evaporationbtn" />
+        <div class="  ">
+            @Html.LabelFor(model => model.No_of_months_for_analysis, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.No_of_months_for_analysis, new { htmlAttributes = new { @class = "form-control", id = "fullreservoirlevel", placeholder = "422.76", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.No_of_months_for_analysis, "", new { @class = "text-danger" })*@
+        
+        </div>
+        <input type="button" class="btn btn-success  pull-right col-md-3" value="Inflow Data" id="inflowdatabtn" />
+        <div class=" ">
+            @Html.LabelFor(model => model.Dead_storage_capacity, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.Dead_storage_capacity, new { htmlAttributes = new { @class = "form-control", id = "numberofpointseac", placeholder = "9", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Dead_storage_capacity, "", new { @class = "text-danger" })*@
+
+        </div>
+        <input type="button" class="btn btn-success  pull-right col-md-3" value="Demand Data" id="demanddatabtn" />
+        <div class=" ">
+            @Html.LabelFor(model => model.InitialReserVoirStorage, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.InitialReserVoirStorage, new { htmlAttributes = new { @class = "form-control", id = "factorofconvertinginflows", placeholder = "100000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.InitialReserVoirStorage, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Converting_Demands_to_CuM, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.Converting_Demands_to_CuM, new { htmlAttributes = new { @class = "form-control", id = "factorofconvertingirrigation", placeholder = "100000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Converting_Demands_to_CuM, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Specicyanualyield, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.Specicyanualyield, new { htmlAttributes = new { @class = "form-control", id = "factorofpowerdemand", placeholder = "100000", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Specicyanualyield, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.SpecicyStorage, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.SpecicyStorage, new { htmlAttributes = new { @class = " ", id = "convertingevaporation", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.SpecicyStorage, "", new { @class = "text-danger" })*@
+        </div>
+       
+
+        <div class=" ">
+            @Html.LabelFor(model => model.No_of_data_in_EAC_table, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.No_of_data_in_EAC_table, new { htmlAttributes = new { @class = " ", id = "convertingelevation", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.No_of_data_in_EAC_table, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.areaconvertingtosqm, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.areaconvertingtosqm, new { htmlAttributes = new { @class = "  ", id = "convertingareatosq.m", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.RequiredReliability, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Evaaccuracy, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.Evaaccuracy, new { htmlAttributes = new { @class = " ", id = "convertingcapacitytocum", placeholder = "1", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Evaaccuracy, "", new { @class = "text-danger" })*@
+        </div>
+      
+
+
+        <div class="">
+            @Html.LabelFor(model => model.Eoverallaccuracy, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.Eoverallaccuracy, new { htmlAttributes = new { @class = " ", id = "capacitytopowerplant", placeholder = "90.0", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Eoverallaccuracy, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Converting_Inflows_to_CuM, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.Converting_Inflows_to_CuM, new { htmlAttributes = new { @class = " ", id = "tailwater", placeholder = "370.00", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Converting_Inflows_to_CuM, "", new { @class = "text-danger" })*@
+        </div>
+      
+        <div class="">
+            @Html.LabelFor(model => model.ConvertingInflowsto_CuM, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.ConvertingInflowsto_CuM, new { htmlAttributes = new { @class = " ", id = "minimumreservoirlevel", placeholder = "430.55", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.ConvertingInflowsto_CuM, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.ConvertingInflowstoCuM, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.ConvertingInflowstoCuM, new { htmlAttributes = new { @class = " ", id = "efficiencyofpowerplant", placeholder = "0.90", type = "decimal", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.ConvertingInflowstoCuM, "", new { @class = "text-danger" })*@
+        </div>
+        
+
+        <div class=" ">
+            @Html.LabelFor(model => model.areaconverttothem, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.DropDownListFor(model => model.areaconverttothem, new SelectList(ViewBag.list2), htmlAttributes: new { @class = " ", id = "highpriority" })
+
+            @*@Html.EditorFor(model => model.areaconverttothem, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*@Html.ValidationMessageFor(model => model.areaconverttothem, "", new { @class = "text-danger" })*@
+        </div>
+      
+        <br />
+        <br />
+        <div>
+            <input type="button" class="btn-NIH_link" value="Retrieve" />
+            <input type="submit" id="cons2formsbmt" class="btn-NIH_link" value="Save" />
+            <input type="button" class="btn-NIH_link" value="Clear" id="consfrmclr2" />
+        </div>
+
+    }
+
+    <div>
+
+        <div style="display:none;" id="InitialRuleTable">
+
+
+
+
+        </div>
+
+        <input type="button" class="btn-NIH_link " value="Back" id="BackbtnIniTial" style="display:none; margin-left:450px;" />
+        <input type="submit" value="Submit Values" class="btn-NIH_link" id="btnsbmtInitial" style="display:none; margin-right:300px;" />
+    </div>
+
+    <div class="container" id="conservationEvaporation" style="display:none;width:400px;">
+        <form class="well form-horizontal" style="font-size:15px;">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">January</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1402" id="january" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">February</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1402" id="february" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">March</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1890" id="march" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">April</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.2408" id="april" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">May</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.3048" id="may" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">June</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.2164" id="june" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">July</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1524" id="july" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">August</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1524" id="august" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">September</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1524" id="september" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">October</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1524" id="october" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">November</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1524" id="november" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">December</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0.1524" id="december" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <input type="button" class="btn-NIH_link  col-lg-offset-5" value="Back" style="margin-left:50px;" id="Consevaporationbackbtn" />
+                <input type="button" value="Submit Values" class="btn-NIH_link " id="Consevaporationsubmitbtn" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container" id="Inflowdatadiv" style="display:none;width:600px;">
+
+        <form class="well form-horizontal" style="font-size:15px;">
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label" id="january">January</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">February</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">March</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">April</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">May</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">June</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">July</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">August</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">September</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">October</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">November</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">December</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <input type="button" class="btn-NIH_link  col-lg-offset-5" value="Back" style="margin-left:200px;" id="inflowBackbtn" />
+                <input type="button" value="Submit Values" class="btn-NIH_link" id="inflowsubmitbtn" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container" id="DemandDataDiv" style="display:none;width:800px;">
+
+        <form class="well form-horizontal" style="font-size:15px;">
+            <fieldset>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">January</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">February</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">March</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">April</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">May</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">June</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">July</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">August</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">September</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">October</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">November</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12 inputGroupContainer">
+                        <div class="">
+                            <label class="col-md-4 control-label">December</label>
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                            <input placeholder="0" class="form-control pull-left" type="number" style="width:100px !important;">
+                        </div>
+                    </div>
+                </div>
+                <input type="button" class="btn-NIH_link col-lg-offset-5" value="Back" style="margin-left:300px;" id="Demanddataback" />
+                <input type="button" value="Submit Values" class="btn-NIH_link" id="monthbtnsbmt" />
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("#eactblbtn").click(function () {
+            SubmitInitialRule();
+            $("#InitialRuleTable").show();
+            $("#BackbtnIniTial").show();
+            $("#btnsbmtInitial").show();
+            $("#consoperform").hide();
+        });
+        $("#BackbtnIniTial").click(function () {
+            $("#BackbtnIniTial").hide();
+            $("#btnsbmtInitial").hide();
+            $("#InitialRuleTable").hide();
+            $("#consoperform").show();
+        });
+        $("#btnsbmtInitial").click(function () {
+            SubmitIitialTable();
+            $("#BackbtnIniTial").hide();
+            $("#btnsbmtInitial").hide();
+            $("#InitialRuleTable").hide();
+            $("#consoperform").show();
+        });
+        $("#evaporationbtn").click(function () {
+            $("#conservationEvaporation").show();
+            $("#consoperform").hide();
+        })
+        $("#Consevaporationbackbtn").click(function () {
+            $("#conservationEvaporation").hide();
+            $("#consoperform").show();
+        });
+        $("#Consevaporationsubmitbtn").click(function () {
+            Submitevaporation();
+            $("#conservationEvaporation").hide();
+            $("#consoperform").show();
+        });
+
+        $("#consfrmclr2").click(function () {
+            $("#consoperform")[0].reset();
+        });
+        $("#inflowdatabtn").click(function () {
+            $("#containerformonth2").show();
+            $("#consoperform").hide();
+        });
+        $("#inflowBackbtn").click(function () {
+            $("#containerformonth2").hide();
+            $("#consoperform").show();
+        });
+        $("#demanddatabtn").click(function () {
+            $("#DemandDataDiv").show();
+            $("#consoperform").hide();
+        })
+        $("#Demanddataback").click(function () {
+            $("#DemandDataDiv").hide();
+            $("#consoperform").show();
+        });
+
+        function SubmitInitialRule() {
+            var Obj = {
+                Dead_storage_capacity: parseInt($('#numberofpointseac').val()),
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetInitialRule", "ConsOper")',
+                data: JSON.stringify({ 'initialRuleCurve': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += ' <table class="table col-lg-offset-3" style="text-align:center; width:600px" id="Initialruletable">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Elevation</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Area</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Capacity</th>';
+
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+
+                        htmlNew += '<td style="font-size: 12px" contenteditable="true">' + item.Area + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values2" contenteditable="true">' + item.Elevation + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values" contenteditable="true">' + item.Capacity + '</td>';
+
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+                    $('#InitialRuleTable').html(htmlNew);
+
+
+                }
+            });
+        }
+        function SubmitIitialTable() {
+            var customers = new Array();
+            $("#Initialruletable TBODY TR").each(function () {
+                var row = $(this);
+                   var customer = {};
+                   customer.Area = (row.find("TD").eq(0).html());
+                   customer.Elevation = parseInt(row.find("TD").eq(1).html());
+                   customer.Capacity = parseInt(row.find("TD").eq(2).html());
+                customers.push(customer);
+                //console.log(customers)
+
+                dataToPost = JSON.stringify({ newlistofeac: customers });
+
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("GetInitialRuleResult", "ConsOper")',
+            traditional: true,
+             data: dataToPost,
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {
+                    console.log(r);
+            }
+            });
+            });
+        }
+         function Submitevaporation() {
+            var Obj = {
+                January: parseInt($('#january').val()),
+                February: parseInt($('#february').val()),
+                March: parseInt($('#march').val()),
+                April: parseInt($('#april').val()),
+                May: parseInt($('#may').val()),
+                June: parseInt($('#june').val()),
+                July: parseInt($('#july').val()),
+                August: parseInt($('#august').val()),
+                September: parseInt($('#september').val()),
+                October: parseInt($('#october').val()),
+                November: parseInt($('#november').val()),
+                December: parseInt($('#december').val()),
+            };
+
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Evaporation", "ConsOper")',
+                data: JSON.stringify({ 'evaporationDepth': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                   // alert(result);
+
+                }
+            });
+        }
+    });
+
+    </script>
+
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />

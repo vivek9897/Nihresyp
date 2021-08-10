@@ -1,0 +1,271 @@
+﻿@model NIH_ReSyp.Models.ConservationOperation2
+
+@{
+    ViewBag.Title = "Conservation_Operation2";
+}
+
+<div class="col-md-9  offset-2">
+    @using (Html.BeginForm("Conservation_Operation2", "ConsOper", FormMethod.Post, new { @class = "", id = "form4cons", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+                Data Entry For Conservation Operation
+            </h2>*@
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class=" ">
+            @Html.LabelFor(model => model.Title_of_problem, htmlAttributes: new { @class = " lable_froms" })
+         <br />
+                @Html.EditorFor(model => model.Title_of_problem, new { htmlAttributes = new { @class = "txtbox_froms ", id = "nameofstructure", placeholder = "Abc" } })
+                @Html.ValidationMessageFor(model => model.Title_of_problem, "", new { @class = "text-danger" })
+           
+        </div>
+        <div class=" ">
+            @Html.LabelFor(model => model.Name_of_Reservoir, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Name_of_Reservoir, new { htmlAttributes = new { @class = " txtbox_froms ", id = "numberofimmediatelystructures", placeholder = "0", type = "number", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Name_of_Reservoir, "", new { @class = "text-danger" })
+      
+        </div>
+        <div class="  ">
+            @Html.LabelFor(model => model.Starting_year, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Starting_year, new { htmlAttributes = new { @class = " txtbox_froms", id = "Idofimmediatelystructures", placeholder = "0", type = "number", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Starting_year, "", new { @class = "text-danger" })
+        
+        </div>
+        <div class=" ">
+            @Html.LabelFor(model => model.Starting_Month, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Starting_Month, new { htmlAttributes = new { @class = "txtbox_froms ", id = "grosscapacityFrL", placeholder = "24.2176", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Starting_Month, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.No_of_months_for_analysis, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.No_of_months_for_analysis, new { htmlAttributes = new { @class = "txtbox_froms ", id = "grosscapacitymddl", placeholder = "1.7", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.No_of_months_for_analysis, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Dead_storage_capacity, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Dead_storage_capacity, new { htmlAttributes = new { @class = " txtbox_froms", id = "initialcapacitystartsimulation", placeholder = "13.0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Dead_storage_capacity, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Deadstoragecapacity, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.DropDownListFor(model => model.Deadstoragecapacity, new SelectList(ViewBag.list4), htmlAttributes: new { @class = "txtbox_froms ", id = "methodhydropowersupply", })
+
+            @*@Html.EditorFor(model => model.Deadstoragecapacity, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.Deadstoragecapacity, "", new { @class = "text-danger" })
+        
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Dead_storagecapacity, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Dead_storagecapacity, new { htmlAttributes = new { @class = "txtbox_froms ", id = "reductionfactorforirrigation", placeholder = ".75", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Dead_storagecapacity, "", new { @class = "text-danger" })
+       
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Dead_storagepacity, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Dead_storagepacity, new { htmlAttributes = new { @class = "txtbox_froms ", id = "reductionfactorirriscarcity", placeholder = "0.0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Dead_storagepacity, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Deadstoragepacity, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Deadstoragepacity, new { htmlAttributes = new { @class = "txtbox_froms ", id = "definingconditions", placeholder = "0.75", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Deadstoragepacity, "", new { @class = "text-danger" })
+
+        </div>
+
+
+        <div class=" ">
+            @Html.LabelFor(model => model.InitialReserVoirStorage, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.InitialReserVoirStorage, new { htmlAttributes = new { @class = "txtbox_froms", id = "convertinginflows", placeholder = "1000000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.InitialReserVoirStorage, "", new { @class = "text-danger" })
+         
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Specicyanualyield, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Specicyanualyield, new { htmlAttributes = new { @class = "txtbox_froms ", id = "powerdemandto", placeholder = "1000000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Specicyanualyield, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Converting_Demands_to_CuM, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Converting_Demands_to_CuM, new { htmlAttributes = new { @class = "txtbox_froms ", id = "irrigationsdemandto", placeholder = "1000000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Converting_Demands_to_CuM, "", new { @class = "text-danger" })
+        
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Converting_Demand_CuM, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Converting_Demand_CuM, new { htmlAttributes = new { @class = " txtbox_froms", id = "domesticdemandsto", placeholder = "1000000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Converting_Demand_CuM, "", new { @class = "text-danger" })
+      
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Converting_Deman_CuM, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Converting_Deman_CuM, new { htmlAttributes = new { @class = " txtbox_froms", id = "minflowdemand", placeholder = "1000000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Converting_Deman_CuM, "", new { @class = "text-danger" })
+        </div>
+          
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Converting_Demands_uM, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Converting_Demands_uM, new { htmlAttributes = new { @class = " txtbox_froms", id = "transferdemand", placeholder = "1000000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Converting_Demands_uM, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.SpecicyStorage, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.SpecicyStorage, new { htmlAttributes = new { @class = " txtbox_froms", id = "elevsationineactable", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.SpecicyStorage, "", new { @class = "text-danger" })
+    
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.No_of_data_in_EAC_table, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.No_of_data_in_EAC_table, new { htmlAttributes = new { @class = "txtbox_froms ", id = "evaporationdepths", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.No_of_data_in_EAC_table, "", new { @class = "text-danger" })
+      
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.RequiredReliability, htmlAttributes: new { @class = " lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.RequiredReliability, new { htmlAttributes = new { @class = "txtbox_froms ", id = "convertingineactable", placeholder = "1000000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.RequiredReliability, "", new { @class = "text-danger" })
+       
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Evaaccuracy, htmlAttributes: new { @class = "lable_froms " })
+            <br />
+            @Html.EditorFor(model => model.Evaaccuracy, new { htmlAttributes = new { @class = "txtbox_froms ", id = "capineactable", placeholder = "1000000", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @Html.ValidationMessageFor(model => model.Evaaccuracy, "", new { @class = "text-danger" })
+        </div>
+          
+       
+        <br />
+        <div>
+            <input type="button" class="btn-NIH_link" value="Retrieve" style="margin-left:100px;" />
+            <input type="submit" id="sbmt4form" class="btn-NIH_link" value="Save"  style="margin-left:3px;"/>
+            <input type="button" class="btn-NIH_link" value="Clear" id="consfrmclr4" style="margin-left:3px;" />
+            @Html.ActionLink("Next", "Conservation_Operation3", "ConsOper", new { @class = "btn-NIH_link", style = "margin-left:3px;" })
+            @Html.ActionLink("Back", "Conservation_Operation", "ConsOper", new { @class = "btn-NIH_link" ,style = "margin-left:3px;" })
+
+        </div>
+
+
+
+    }
+
+
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#consfrmclr4").click(function () {
+            $("#form4cons")[0].reset();
+        })
+        //$("#form4cons").submit(function (e) {
+
+        //    var nameofstructures = document.getElementById("nameofstructure").value;
+        //    var  numberofimmediatelystructure = document.getElementById("numberofimmediatelystructures").value;
+        //    var Idofimmediatelystructure = document.getElementById("Idofimmediatelystructures").value;
+        //    var grosscapacityFrLe = document.getElementById("grosscapacityFrL").value;
+        //    var grosscapacitymdd = document.getElementById("grosscapacitymddl").value;
+        //    var initialcapacitystartsimul = document.getElementById("initialcapacitystartsimulation").value;
+        //    var methodhydropowersuply = document.getElementById("methodhydropowersupply").value;
+        //    var reductionfactorforirr = document.getElementById("reductionfactorforirrigation").value;
+        //    var reductionfactorirriscity = document.getElementById("reductionfactorirriscarcity").value;
+        //    var definingcondition = document.getElementById("definingconditions").value;
+        //    var convertinginflo = document.getElementById("convertinginflows").value;
+        //    var powerdeman = document.getElementById("powerdemandto").value;
+        //    var irrigationsdeman = document.getElementById("irrigationsdemandto").value;
+        //    var domesticdemand = document.getElementById("domesticdemandsto").value;
+        //    var minflowdemandss = document.getElementById("minflowdemand").value;
+        //    var transferdemandss = document.getElementById("transferdemand").value;
+        //    var elevsationineactabless = document.getElementById("elevsationineactable").value;
+        //    var evaporationdepthsi = document.getElementById("evaporationdepths").value;
+        //    var convertingineactables = document.getElementById("convertingineactable").value;
+        //    var capineactabless = document.getElementById("capineactable").value;
+
+        //    var nameofthestructures = nameofstructures.padStart(0, ' ');
+        //    var numberofimmediatelystructureses = numberofimmediatelystructure.padStart(0, ' ');
+        //    var Idofimmediatelystructureses = Idofimmediatelystructure.padStart(0, ' ');
+        //    var grosscapacityFrLeof = grosscapacityFrLe.padStart(8, ' ');
+        //    var grosscapacitymddof = grosscapacitymdd.padStart(3, ' ');
+        //    var initialcapacitystartsimulof = initialcapacitystartsimul.padStart(3, ' ');
+        //    var methodhydropowersuplyof = methodhydropowersuply.padStart(7, ' ');
+        //    var Convertingirrigationof = reductionfactorforirr.padStart(7, ' ');
+        //    var reductionfactorirriscityof = reductionfactorirriscity.padStart(7, ' ');
+        //    var definingconditionof = definingcondition.padStart(7, ' ');
+        //    var convertinginfloof = convertinginflo.padStart(7, ' ');
+        //    var powerdemandof = powerdeman.padStart(7, ' ');
+        //    var irrigationsdemanof = irrigationsdeman.padStart(7, ' ');
+        //    var domesticdemandof = domesticdemand.padStart(7, ' ');
+        //    var minflowdemandssof = minflowdemandss.padStart(7, ' ');
+        //    var transferdemandssof = transferdemandss.padStart(7, ' ');
+        //    var elevsationineactablessof = elevsationineactabless.padStart(7, ' ');
+        //    var evaporationdepthsiof = evaporationdepthsi.padStart(7, ' ');
+        //    var convertingineactablessof = convertingineactables.padStart(7, ' ');
+        //    var capineactablessof = capineactabless.padStart(7, ' ');
+
+
+        //    var blob = new Blob([nameofthestructures,
+        //        numberofimmediatelystructureses,
+        //        Idofimmediatelystructureses,
+        //        grosscapacityFrLeof,
+        //        grosscapacitymddof,
+        //        initialcapacitystartsimulof,
+        //        methodhydropowersuplyof,
+        //        Convertingirrigationof,
+
+        //    ],
+
+        //        { type: "text/plain;charset=utf-8" });
+
+        //    saveAs(blob, "E://file.spi");
+        //    $("#form4cons")[0].reset();
+        //});
+    });
+
+</script>
+
+
+
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />

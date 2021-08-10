@@ -1,0 +1,126 @@
+﻿@model NIH_ReSyp.Models.Floodoper
+
+@{
+    ViewBag.Title = "Flood Operation Form";
+}
+
+<div class="col-md-9  offset-2">
+    @using (Html.BeginForm("Flood_Operation_Form", "Floodoper", FormMethod.Post, new { @class = "", id = "floodform", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+                Data Entry For Flood Control Operation
+            </h2>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="">
+            @Html.LabelFor(model => model.Titleof_problem, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.Titleof_problem, new { htmlAttributes = new { @class = "form-control", id = "floodformvalue1", placeholder = "Flood Operation Of a System" } })
+            @*@Html.ValidationMessageFor(model => model.Titleof_problem, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.numberofstructure, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.numberofstructure, new { htmlAttributes = new { @class = "form-control", id = "floodformvalue2", placeholder = "4", type = "number", min = "1", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.numberofstructure, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.staringyear, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.staringyear, new { htmlAttributes = new { @class = "form-control", id = "floodformvalue3", placeholder = "6", type = "number", min = "1", max = "24", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value   < 1) ? (1/1) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.staringyear, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.staringmnth, htmlAttributes: new { @class = "control-label col-md-4" })
+            <br />
+            @Html.EditorFor(model => model.staringmnth, new { htmlAttributes = new { @class = "form-control", id = "floodformvalue4", placeholder = "5", type = "number", min = "1", max = "31", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value   < 1) ? (1/1) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.staringmnth, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.staringmonth, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.staringmonth, new { htmlAttributes = new { @class = "", id = "floodformvalue5", placeholder = "1", type = "number", min = "1", max = "12", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value   < 1) ? (1/1) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.staringmonth, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.timestep, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.timestep, new { htmlAttributes = new { @class = " ", id = "floodformvalue6", placeholder = "1", type = "number", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.timestep, "", new { @class = "text-danger" })*@
+        </div>
+
+
+        <div class=" ">
+            @Html.LabelFor(model => model.numberofperiod, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.numberofperiod, new { htmlAttributes = new { @class = " ", id = "floodformvalue7", placeholder = "10", type = "number", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.numberofperiod, "", new { @class = "text-danger" })*@
+        </div>
+
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Idofstructure, htmlAttributes: new { @class = " " })
+            <br />
+            @Html.EditorFor(model => model.Idofstructure, new { htmlAttributes = new { @class = " ", id = "floodformvalue8", placeholder = "1", type = "number", min = "0", max = "120000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Idofstructure, "", new { @class = "text-danger" })*@
+
+
+        </div>
+
+        <br />
+        <div>
+            <input type="button" class="btn-NIH_link" value="Retrieve" />
+            <input type="submit" id="floodform1sbmt" class="btn-NIH_link" value="Save" />
+            <input type="button" class="btn-NIH_link" value="Clear" id="floodfrmclr1" />
+            @Html.ActionLink("Next", "Flood_Operation_Form2", "Floodoper", new { @class = "btn-NIH_link" })
+        </div>
+
+    }
+
+</div>
+
+
+    <!-- /.container -->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            $("#floodfrmclr1").click(function () {
+                $("#floodform")[0].reset();
+            })
+            //$("#floodform").submit(function (e) {
+            //    var a = document.getElementById("floodformvalue1").value;
+            //    var b = document.getElementById("floodformvalue2").value;
+            //    var c = document.getElementById("floodformvalue3").value;
+            //    var d = document.getElementById("floodformvalue4").value;
+            //    var e = document.getElementById("floodformvalue5").value;
+            //    var f = document.getElementById("floodformvalue6").value;
+            //    var g = document.getElementById("floodformvalue7").value;
+            //    var h = document.getElementById("floodformvalue8").value;
+            //    var blob = new Blob([a, " \n ", b, " \n ", c, " \n ", d, " \n ", e, " \n ", f, " \n ", g, " \n ", h],
+
+            //        { type: "text/plain;charset=utf-8" });
+            //    saveAs(blob, "E://file.spi");
+            //    $("#floodform")[0].reset();
+            //});
+        });
+
+    </script>
+
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />

@@ -1,0 +1,445 @@
+﻿@model NIH_ReSyp.Models.ConservationOperation3
+
+@{
+    ViewBag.Title = "Conservation_Operation3";
+}
+
+<div class="col-md-9  offset-2">
+
+    @using (Html.BeginForm("Conservation_Operation3", "ConsOper", FormMethod.Post, new { @class = "", id = "form5cons", style = "font-color:#000;  font-family: 'Lato' !important; " }))
+    {
+        @Html.AntiForgeryToken()
+
+        @*<h2 class="text-center" style="font-family:Arial; font-size:30px; font-weight:400; margin-bottom:20px">
+            Data Entry For Conservation Operation
+        </h2>*@
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-group">
+    @Html.LabelFor(model => model.Dead_storagecapacity, htmlAttributes: new { @class = "control-label col-md-4" })
+    <br />
+    @Html.EditorFor(model => model.Dead_storagecapacity, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue1", placeholder = "10", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @Html.ValidationMessageFor(model => model.Dead_storagecapacity, "", new { @class = "text-danger" })
+</div>
+         
+<div class="form-group">
+    @Html.LabelFor(model => model.Dead_storagepacity, htmlAttributes: new { @class = "control-label col-md-4" })
+    <br />
+    @Html.EditorFor(model => model.Dead_storagepacity, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue2", placeholder = "311", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @Html.ValidationMessageFor(model => model.Dead_storagepacity, "", new { @class = "text-danger" })
+ 
+        </div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Deadstoragepacity, htmlAttributes: new { @class = "control-label col-md-4" })
+    <br />
+    @Html.EditorFor(model => model.Deadstoragepacity, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue3", placeholder = "311", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+    @Html.ValidationMessageFor(model => model.Deadstoragepacity, "", new { @class = "text-danger" })
+
+</div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.InitialReserVoirStorage, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.InitialReserVoirStorage, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue4", placeholder = "0.9", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.InitialReserVoirStorage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="button" id="specifybtn" class="btn btn-success col-md-3 pull-right" value="Specify E-A-C Table">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Numberofpointsineactable, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Numberofpointsineactable, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue5", placeholder = "10", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Numberofpointsineactable, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="button" id="dmndybtn" class="btn btn-success col-md-3 pull-right" value="Specify Demands and Rule Levels">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Converting_Demands_to_CuM, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Converting_Demands_to_CuM, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue6", placeholder = "2", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Converting_Demands_to_CuM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="button" id="evaporationbtn" class="btn btn-success col-md-3 pull-right" value="Specify Evaporation Depths">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Converting_Demand_CuM, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Converting_Demand_CuM, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue7", placeholder = "0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Converting_Demand_CuM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="button" id="inflowdatabtn" class="btn btn-success col-md-3 pull-right" value="Specify Inflow Data">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Converting_Deman_CuM, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Converting_Deman_CuM, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue8", placeholder = "0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Converting_Deman_CuM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="button" id="specifmnthlyybtn" class="btn btn-success col-md-3 pull-right" value="Specify Monthly Priorties Irrigation(I)/HydroPower">
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Converting_Demands_uM, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.DropDownListFor(model => model.Converting_Demands_uM, new SelectList(ViewBag.list5), htmlAttributes: new { @class = "form-control", id = "form5consvalue9" })
+                @*@Html.EditorFor(model => model.Converting_Demands_uM, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.ValidationMessageFor(model => model.Converting_Demands_uM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="button" id="specifypwrbtn" class="btn btn-success col-md-3 pull-right" value="Specify Power Demand">
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpecicyStorage, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.SpecicyStorage, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue10", placeholder = "0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.SpecicyStorage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <input type="button" id="specifysavebtn" class="btn btn-success col-md-3 pull-right" value="Save structure information">
+        <div class="form-group">
+            @Html.LabelFor(model => model.No_of_data_in_EAC_table, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.No_of_data_in_EAC_table, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue11", placeholder = "0", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.No_of_data_in_EAC_table, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RequiredReliability, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.RequiredReliability, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue12", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.RequiredReliability, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Evaaccuracy, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Evaaccuracy, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue13", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Evaaccuracy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Evaacracy, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Evaacracy, new { htmlAttributes = new { @class = "form-control", id = "form5consvalue14", placeholder = "1", type = "decimal", min = "0", max = "100000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+                @Html.ValidationMessageFor(model => model.Evaacracy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <br />
+        <div>
+            <input type="button" class="btn-NIH_link col-lg-offset-2" value="Retrieve" />
+            <input type="submit" id="savefrm5cons" class="btn-NIH_link col-lg-offset-1" value="Save" />
+            <input type="button" class="btn-NIH_link col-lg-offset-1" value="Clear" id="consfrmclr5" />
+            @Html.ActionLink("Back", "Conservation_Operation2", "ConsOper", new { @class = "btn-NIH_link1 col-lg-offset-1" })
+
+        </div>
+
+    }
+
+
+    <div>
+
+        <div style="display:none;" id="CONSERVATIONtABLE">
+
+
+
+
+        </div>
+
+        <input type="button" class="btn-NIH_link " value="Back" id="BackbtnIniTial" style="display:none; margin-left:450px;" />
+        <input type="submit" value="Submit Values" class="btn-NIH_link" id="btnsbmtInitial" style="display:none; margin-right:300px;" />
+    </div>
+    <div class="container" id="constbl2" style="display:none;width:400px;">
+        <form class="well form-horizontal" style="font-size:15px;">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">January</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">February</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">March</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">April</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">May</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">June</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">July</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">August</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">September</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">October</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">November</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label">December</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="">
+                            <input placeholder="0" class="form-control" type="number">
+                        </div>
+                    </div>
+                </div>
+                <input type="button" class="btn-NIH_link " value="Back" style="margin-left:50px;" id="Backbtnevaporation" />
+                <input type="submit" value="Submit Values" class="btn-NIH_link" id="consbtnsbmt2" />
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="container" id="constbl3" style="display:none">
+        <table class="table col-lg-offset-4" style="text-align:center; width:300px" id="tbl1cons">
+            <thead>
+                <tr>
+                    <th class="col-md-2" style="text-align:center">Month</th>
+                    <th class="col-md-2" style="text-align:center">Inflow</th>
+            </thead>
+            <tbody>
+
+                <tr class="active" contenteditable="true">
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+                <tr class="active" contenteditable="true">
+                    <td>2</td>
+                    <td>0</td>
+                </tr>
+                <tr class="active" contenteditable="true">
+                    <td>3</td>
+                    <td>0</td>
+                </tr>
+                <tr class="active" contenteditable="true">
+                    <td>4</td>
+                    <td>0</td>
+                </tr>
+                <tr class="active" contenteditable="true">
+                    <td>5</td>
+                    <td>0</td>
+                </tr>
+                <tr class="active" contenteditable="true">
+                    <td>6</td>
+                    <td>0</td>
+
+                </tr>
+                <tr class="active" contenteditable="true">
+                    <td>7</td>
+                    <td>0</td>
+
+                </tr>
+                <tr class="active" contenteditable="true">
+                    <td>8</td>
+                    <td>0.0</td>
+                </tr>
+
+
+            </tbody>
+        </table>
+        <input type="button" class="btn-NIH_link " value="Back" style="margin-left:420px;" id="inflowback" />
+        <input type="submit" value="Submit Values" class="btn-NIH_link" id="consbtnsbmt3" />
+    </div>
+    <br />
+ </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $("#specifybtn").click(function () {
+            SubmitConservationTable();
+            $("#form5cons").hide();
+            $("#CONSERVATIONtABLE").show();
+            $("#BackbtnIniTial").show();
+            $("#btnsbmtInitial").show();
+        })
+        $("#BackbtnIniTial").click(function () {
+            $("#form5cons").show();
+            $("#CONSERVATIONtABLE").hide();
+            $("#BackbtnIniTial").hide();
+            $("#btnsbmtInitial").hide();
+        });
+        $("#btnsbmtInitial").click(function () {
+            Submitconservation();
+            $("#form5cons").show();
+            $("#CONSERVATIONtABLE").hide();
+            $("#BackbtnIniTial").hide();
+            $("#btnsbmtInitial").hide();
+        });
+
+        $("#evaporationbtn").click(function () {
+            $("#form5cons").hide();
+            $("#constbl2").show();
+        });
+
+        $("#Backbtnevaporation").click(function () {
+            $("#form5cons").show();
+            $("#constbl2").hide();
+        })
+        $("#inflowdatabtn").click(function () {
+            $("#form5cons").hide();
+            $("#constbl3").show();
+        })
+        $("#inflowback").click(function () {
+            $("#form5cons").show();
+            $("#constbl3").hide();
+        })
+        $("#consfrmclr5").click(function () {
+            $("#form5cons")[0].reset();
+        })
+        function SubmitConservationTable() {
+            var Obj = {
+                Numberofpointsineactable: parseInt($('#form5consvalue5').val()),
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GetConservationOperation", "ConsOper")',
+                data: JSON.stringify({ 'operation3': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += ' <table class="table col-lg-offset-3" style="text-align:center; width:600px" id="tablespecifyeac">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Point</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Elevation</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Area</th>';
+                    htmlNew += ' <th class="col-md-2" style="text-align:center">Capacity</th>';
+
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+                        htmlNew += '<td style="font-size: 12px" >' + item.Point + '</td>';
+                        htmlNew += '<td style="font-size: 12px" contenteditable="true">' + item.Area + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values2" contenteditable="true">' + item.Elevation + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values" contenteditable="true">' + item.Capacity + '</td>';
+
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+                    $('#CONSERVATIONtABLE').html(htmlNew);
+
+
+                }
+            });
+        }
+         function Submitconservation() {
+            var customers = new Array();
+             $("#tablespecifyeac TBODY TR").each(function () {
+                var row = $(this);
+                var customer = {};
+                customer.Point = (row.find("TD").eq(0).html());
+                customer.Area = parseInt(row.find("TD").eq(1).html());
+                customer.Elevation = parseInt(row.find("TD").eq(2).html());
+                customer.Capacity = parseInt(row.find("TD").eq(3).html());
+                customers.push(customer);
+                //console.log(customers)
+
+                dataToPost = JSON.stringify({ specifyeactablesnew: customers });
+
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("GetConservationOperation", "ConsOper")',
+            traditional: true,
+             data: dataToPost,
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {
+                    console.log(r);
+
+            }
+            });
+            });
+        }
+    });
+
+    </script>
+
+
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />

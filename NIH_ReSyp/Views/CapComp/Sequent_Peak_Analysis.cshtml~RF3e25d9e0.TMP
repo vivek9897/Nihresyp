@@ -1,0 +1,232 @@
+﻿@model NIH_ReSyp.Models.capcompform1
+@{
+    ViewBag.Title = "Sequent-Peak Analysis";
+}
+
+<link href="~/lib/css/style.css" rel="stylesheet" />
+
+<div class="col-md-9  offset-2">
+
+    @using (Html.BeginForm("Sequent_Peak_Analysis", "CapComp", FormMethod.Post, new { @class = "", id = "frm", style = "font-color:#000;  font-family: 'Lato' !important;" }))
+    {
+        @Html.AntiForgeryToken()
+        
+       
+
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+        <div class=" ">
+            @Html.LabelFor(model => model.Title_of_problem, htmlAttributes: new { @class = "lable_froms" })
+            <br />
+            @Html.EditorFor(model => model.Title_of_problem, new { htmlAttributes = new { @class = "txtbox_froms", id = "TitleofProblem", placeholder = "Sample Data for Sequent Peak Analysis" } })
+            @*@Html.ValidationMessageFor(model => model.Title_of_problem, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">  
+            @Html.LabelFor(model => model.Name_of_Reservoir, htmlAttributes: new {  style = "font-size:14px; font-weight: normal;" })
+            <br />
+            @Html.EditorFor(model => model.Name_of_Reservoir, new { htmlAttributes = new {id = "NameofReservoir", placeholder = "Test Reservoir", style = "width:450px; height:35px; border:1.5px solid black; border-radius:3px; margin-bottom:8px;" } })
+            @*@Html.ValidationMessageFor(model => model.Name_of_Reservoir, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Starting_year, htmlAttributes: new {  style = "font-size:14px; font-weight: normal;" })
+            <br />
+            @Html.EditorFor(model => model.Starting_year, new { htmlAttributes = new {  style = "width:450px; height:35px; border:1.5px solid black; border-radius:3px; margin-bottom:8px;", id = "StartingYear", placeholder = "1935", type = "number", min = "1900", max = "2020", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||1/1);this.value=(this.value   < 1) ? (1/1) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Starting_year, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Starting_Month, htmlAttributes: new {  style = "font-size:14px; font-weight: normal;" })
+            <br />
+            @Html.EditorFor(model => model.Starting_Month, new { htmlAttributes = new {style = "width:450px; height:35px; border:1.5px solid black; border-radius:3px; margin-bottom:8px;",id = "StartingMonth", placeholder = "1", type = "number", min = "1", max = "12", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Starting_Month, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.No_of_month_for_analysis, htmlAttributes: new { style = "font-size:14px; font-weight: normal;" })
+            <br />
+            @Html.EditorFor(model => model.No_of_month_for_analysis, new { htmlAttributes = new {  id = "NumberOfYearsForAnalysis", style = "width:450px; height:35px; border:1.5px solid black; border-radius:3px; margin-bottom:8px;", placeholder = "30", type = "number", min = "0", max = "2000000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.No_of_years_for_analysis, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Demand_each_year, htmlAttributes: new {style = "font-size:14px; font-weight: normal;" })
+            <br />
+            @Html.DropDownListFor(model => model.Demand_each_year, new SelectList(ViewBag.lis), htmlAttributes: new { id = "DemandVaryEachYear", style = "width:450px; height:35px; border:1.5px solid black; border-radius:3px; margin-bottom:8px;" })
+            @*@Html.EditorFor(model => model.Demand_each_year, new { htmlAttributes = new { @class = "form-control" } })*@
+            @*@Html.ValidationMessageFor(model => model.Demand_each_year, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class="">
+            @Html.LabelFor(model => model.Converting_Inflows_to_CuM, htmlAttributes: new { style = "font-size:14px; font-weight: normal;" })
+            <br />
+            @Html.EditorFor(model => model.Converting_Inflows_to_CuM, new { htmlAttributes = new {  style = "width:450px; height:35px; border:1.5px solid black; border-radius:3px; margin-bottom:8px;", id = "FactorForConvertingInflow", placeholder = "1000000", type = "decimal", min = "0", max = "20000000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*    @Html.ValidationMessageFor(model => model.Converting_Inflows_to_CuM, "", new { @class = "text-danger" })*@
+
+        </div>
+
+        <div class=" ">
+            @Html.LabelFor(model => model.Converting_Demands_to_CuM, htmlAttributes: new {style = "font-size:14px; font-weight: normal;" })
+            <br />
+            @Html.EditorFor(model => model.Converting_Demands_to_CuM, new { htmlAttributes = new { style = "width:450px; height:35px; border:1.5px solid black; border-radius:3px; margin-bottom:8px;", id = "FactorForConvertingDemand", placeholder = "1000000", type = "decimal", min = "0", max = "2000000000", maxlength = "9", oninput = "this.value=this.value.slice(0,this.maxLength||0/0);this.value=(this.value   < 0) ? (0/0) : this.value;" } })
+            @*@Html.ValidationMessageFor(model => model.Converting_Demands_to_CuM, "", new { @class = "text-danger" })*@
+
+
+        </div>
+        
+        <div class="">
+            <input type="button" id="inflowvalues" class="btn-NIH_link" value="Inflow and Demand Values"  style="margin-left:120px;" />
+           
+        </div>
+
+        
+ 
+        <div>
+            <input type="button" class="btn-NIH_link" value="Retrieve" id="retrievedata"   style="margin-left:120px;"/>
+            <input type="submit" class="btn-NIH_link" value="Save" id="savefrmbtn"  style="margin-left:3px;"/>
+            <input type="button" class="btn-NIH_link" value="Clear" id="clearfrmbtn"  style="margin-left:3px;"  />
+          
+
+        </div>
+
+    }
+</div>
+
+<div>
+
+    <div style="display:none;" id="inflowDiv">
+
+
+
+
+    </div>
+
+    <input type="button" class="btn-NIH_link " value="Back" id="Backbtn" style="display:none; margin-left:450px;" />
+    <input type="submit" value="Submit Values" class="btn-NIH_link" id="btnsbmt123" style="display:none; margin-right:300px;" />
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnsbmt123").click(function () {
+            $("#frm").show();
+            SubmitInflow();
+            $('#inflowDiv').hide();
+            $('#Backbtn').hide();
+            $('#btnsbmt123').hide();
+        });
+
+        $("#inflowvalues").click(function () {
+            $("#frm").hide();
+            $('#inflowDiv').show();
+            SubmitInflowValueFun();
+            $('#Backbtn').show();
+            $('#btnsbmt123').show();
+        });
+        $("#Backbtn").click(function () {
+            $("#inflowDiv").hide();
+            $("#frm").show();
+            $('#Backbtn').hide();
+            $('#btnsbmt123').hide();
+        });
+
+        $("#clearfrmbtn").click(function () {
+            $("#frm")[0].reset();
+        });
+
+
+        function SubmitInflowValueFun() {
+            var Obj = {
+                Starting_year: parseInt($('#StartingYear').val()),
+                Starting_Month: parseInt($('#StartingMonth').val()),
+                No_of_month_for_analysis: parseInt($('#NumberOfYearsForAnalysis').val()),
+
+            };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SubmitInflowValue", "CapComp")',
+                data: JSON.stringify({ 'capform': Obj }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+
+                    var html = '';
+                    //$("#AvgPerformancetbl").DataTable().destroy(true);
+
+                    var htmlNew = '';
+                    htmlNew += '<table id="InflowTable" class="table col-lg-offset-3" style="text-align:center; width:600px;">';
+                    htmlNew += '<thead class="tableheader" style="text-align: center">';
+                    htmlNew += '<tr>';
+                    htmlNew += '<th class="col-md-2" style="text-align:center">Month-Year</th>';
+                    htmlNew += '<th class="col-md-2" style="text-align:center">Inflow</th>';
+                    htmlNew += '<th class="col-md-2" style="text-align:center">Demand</th>';
+
+
+                    htmlNew += '</tr>';
+                    htmlNew += '</thead>';
+                    htmlNew += '<tbody class="tbody" style=" color: #000 !important;font-weight: 400 !important;text-align: center">';
+
+
+                    $.each(result, function (key, item) {
+
+                        htmlNew += '<tr>';
+
+                        htmlNew += '<td style="font-size: 12px" id="values1">' + item.monthyear + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values2" contenteditable="true">' + item.Inflow + '</td>';
+                        htmlNew += '<td style="font-size: 12px" id="values" contenteditable="true">' + item.Demand + '</td>';
+
+                        htmlNew += '</tr>';
+                    });
+                    htmlNew += '</tbody>';
+                    htmlNew += '</table>';
+
+
+                    $('#inflowDiv').html(htmlNew);
+
+                }
+
+            });
+
+        }
+        function SubmitInflow() {
+            var customers = new Array();
+            $("#InflowTable TBODY TR").each(function () {
+                var row = $(this);
+                var customer = {};
+                customer.monthyear = (row.find("TD").eq(0).html());
+                customer.Inflow = parseInt(row.find("TD").eq(1).html());
+                customer.Demand = parseInt(row.find("TD").eq(2).html());
+                customers.push(customer);
+                //console.log(customers)
+
+                //dataToPost = JSON.stringify({ inflowdemand: customers });
+    
+            jQuery.ajax({
+            type: "POST",
+            url: '@Url.Action("returnvalues", "CapComp")',
+            traditional: true,
+                data: JSON.stringify({ inflowdemand: customers }),
+            contentType: "application/JSON; charset=utf-8",
+                dataType: 'JSON',
+            cache: false,
+                success: function (r) {       
+            }
+            });
+            });
+      }
+       
+    });
+
+
+
+</script>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
